@@ -1,0 +1,12 @@
+:host {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+    gap: 3rem;
+    justify-items: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+::slotted(a.active) {
+    font-weight: bold;
+}
