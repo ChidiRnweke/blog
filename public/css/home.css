@@ -18,6 +18,10 @@ body {
     --error-color: #dc3545;
 }
 
+main {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+}
 
 a {
     color: var(--primary-color);
@@ -32,9 +36,12 @@ a:hover {
 
 }
 
+
 hero-section section {
     display: grid;
+    gap: 2rem;
     position: absolute;
+    max-width: 10rem;
     justify-content: right;
     justify-self: right;
     align-items: end;
@@ -52,12 +59,12 @@ hero-section section p {
     text-shadow: 0.15rem 0.15rem 0.25rem rgba(0, 0, 0, 1);
 }
 
-nav-bar {
+header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: #ffffff;
+}
+
+.text-stuff {
+    text-align: right;
 }
 
 nav-bar a {
@@ -68,38 +75,22 @@ nav-bar a {
 
 .main-grid {
     display: grid;
+    grid-auto-rows: min-content;
     grid-template-columns: 1fr;
-    grid-gap: 1rem;
+    row-gap: 3rem;
     margin-top: 0.5rem;
     grid-template-areas:
         "description"
+        "card"
         "skills"
         "experience"
-        "card";
+    ;
 }
 
-.skills-container,
-.experience-container {
-    grid-template-columns: 1fr;
-}
+
 
 .skills {
     grid-area: skills;
-}
-
-.skills picture {
-    grid-area: picture;
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-}
-
-.skills picture img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
 }
 
 .skills-text {
@@ -109,9 +100,39 @@ nav-bar a {
 .experience-container,
 .skills-container {
     display: grid;
-    column-gap: 1rem;
-
+    grid-template-columns: 1fr;
+    grid-template-rows: initial;
+    grid-auto-rows: min-content;
+    grid-template-areas: "text"
+        "picture";
 }
+
+.skills-text,
+.experience-text {
+    align-items: center;
+}
+
+.skills h2,
+.skills-text,
+.experience h2,
+.experience-text {
+    padding: 1rem;
+    text-align: center;
+    align-self: center;
+}
+
+
+.skills-container {
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "text picture";
+}
+
+.experience-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "picture text";
+}
+
 
 @media (min-width: 768px) {
 
@@ -127,28 +148,36 @@ nav-bar a {
             "card card card";
     }
 
+    .experience-container,
+    .skills-container {
+        column-gap: 1rem;
+        grid-template-columns: 1fr;
+
+    }
+
+
     .skills-container {
         grid-template-columns: 2.5fr 1fr;
         grid-template-areas: "text picture";
     }
 
-    .skills h2,
-    .skills-text {
-        text-align: right;
-    }
-
-
     .experience-container {
         grid-template-columns: 1fr 2.5fr;
         grid-template-areas: "picture text";
     }
-}
 
+    .skills h2,
+    .skills-text {
+        padding: initial;
+        text-align: right;
+    }
 
+    .experience h2,
+    .experience-text {
+        padding: initial;
+        text-align: left;
+    }
 
-
-.experience h2 {
-    text-align: left;
 }
 
 .recent-articles {
@@ -167,10 +196,6 @@ nav-bar a {
 }
 
 
-
-
-
-
 .projects-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -179,15 +204,15 @@ nav-bar a {
 }
 
 
-.experience picture {
+
+
+.experience picture,
+.skills picture {
     grid-area: picture;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
 }
 
-.experience picture img {
+.experience picture img,
+.skills picture img {
     max-width: 100%;
     height: auto;
     display: block;
@@ -196,7 +221,6 @@ nav-bar a {
 
 .experience-text {
     grid-area: text;
-
 }
 
 .projects {
@@ -209,9 +233,6 @@ project-card p,
     text-align: center;
 }
 
-project-card {
-    height: min-content;
-}
 
 
 project-card p {
