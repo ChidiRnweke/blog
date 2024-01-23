@@ -39,7 +39,6 @@ export const router: Router = new class {
     private setupListeners(): void {
         document.addEventListener('routeChanged', () => {
             const route = window.location.pathname;
-            console.log(route);
             this.handleRouteChange(route);
         });
 
@@ -65,8 +64,8 @@ const notFoundPage: Page = {
     templateId: 'page-not-found',
     onRender: () => {
         const homeButton = getElementOrThrow<HTMLButtonElement>(document, "#back-home");
-        homeButton.addEventListener('click', () => navigateTo('home', "/"));
+        homeButton.addEventListener('click', () => navigateTo('home', "/personal-site/"));
     }
 }
 
-router.addRoute('/not-found', notFoundPage);
+router.addRoute('/personal-site/not-found', notFoundPage);
