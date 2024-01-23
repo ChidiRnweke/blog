@@ -12,6 +12,7 @@
     <script type="module" src="/src/components/NavBar.ts"></script>
     <script type="module" src="/src/components/HeroSection.ts"></script>
     <script type="module" src="/src/components/SequentialSlider.ts"></script>
+    <script type="module" src="/src/components/ProjectCard.ts"></script>
 
 
 
@@ -27,17 +28,21 @@
 
         </hero-section>
         <div class="main-grid">
-            <section class="main-grid-skills">
-                <h2>Skills</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                </p>
+            <section class="skills">
+                <h2>Interests</h2>
+                <div class="skills-container">
+                    <picture>
+                        <img src="static/images/beach-road.png">
+                    </picture>
+
+                    <div class="skills-text">
+                        <p>Python</p>
+                        <p>Machine learning</p>
+                        <p>Data engineering</p>
+                        <p>Scala</p>
+                    </div>
+                </div>
+            </section>
             </section>
             <section class="recent-articles">
                 <h2>Recent articles</h2>
@@ -53,23 +58,42 @@
             </section>
             <section class="experience">
                 <h2>Experience</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </section>
-            <section class="main-grid-card">
-                <h2>projects</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </section>
+                <div class="experience-container">
+                    <picture>
+                        <img src="static/images/side-r2.png">
+                    </picture>
 
+                    <div class="experience-text">
+                        <p>Applied ML researcher @ Employer</p>
+                        <p>I'll probably but something about education</p>
+                    </div>
+                </div>
+            </section>
+            <section class="projects">
+                <h2>Projects</h2>
+                <div class="projects-container">
+                    <project-card>
+                        <img src="static/images/beach-road.png" slot="image">
+                        <p slot="caption">Beachy road, beachy road</p>
+                    </project-card>
+                    <project-card>
+                        <img src="static/images/beach-road.png" slot="image">
+                        <p slot="caption">Beachy road, beachy road</p>
+                    </project-card>
+                    <project-card>
+                        <img src="static/images/beach-road.png" slot="image">
+                        <p slot="caption">Beachy road, beachy road</p>
+                    </project-card>
+                    <project-card>
+                        <img src="static/images/beach-road.png" slot="image">
+                        <p slot="caption">Beachy road, beachy road</p>
+                    </project-card>
+                    <project-card>
+                        <img src="static/images/beach-road.png" slot="image">
+                        <p slot="caption">Beachy road, beachy road</p>
+                    </project-card>
+                </div>
+            </section>
         </div>
     </main>
 
