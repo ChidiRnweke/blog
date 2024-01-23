@@ -1,0 +1,16 @@
+::slotted(:not(.active)) {
+    display: none;
+}
+
+
+::slotted(.active) {
+    display: block;
+}
+
+.navigation-buttons {
+    display: flex;
+    margin-top: 1vw;
+    padding: 1rem 0rem;
+    align-items: center;
+
+}
