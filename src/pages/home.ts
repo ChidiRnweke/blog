@@ -1,5 +1,4 @@
-import { getElementOrThrow } from "../utils/dom.js";
-import { router, Page, navigateTo } from "../router.js"
+import { router, Page } from "../router.js"
 
 export const homePage: Page = {
     templateId: "home",
