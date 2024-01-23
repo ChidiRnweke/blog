@@ -20,7 +20,6 @@ class ProjectCard extends HTMLElement {
 
         const hasImage = imageSlot.assignedNodes({ flatten: true }).length > 0;
         const hasCaption = captionSlot.assignedNodes({ flatten: true }).length > 0;
-        console.log(imageSlot.assignedNodes());
 
         if (!hasImage) {
             throw Error('ProjectCard requires an "image" slot to be filled.');
@@ -40,15 +39,42 @@ class ProjectCard extends HTMLElement {
 
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
-        <style>
-            @import url('src/components/css/project-card.css');
+<style>
+    :host {
+        display: grid;
+        grid-template-areas:
+            "image"
+            "text";
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content;
+    }
 
-        </style>
-        <figure>
-            <slot name="image"></slot>
-            <slot name="caption"></slot>
-        </figure>
-            `;
+
+    slot[name="caption"]::slotted(*) {
+        grid-area: text;
+        margin-top: 0;
+    }
+
+    ::slotted(img) {
+        grid-area: image;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+        margin-bottom: 0;
+    }
+
+    ::slotted(img:hover) {
+        filter: none;
+    }
+
+</style>
+<figure>
+    <slot name="image"></slot>
+    <slot name="caption"></slot>
+</figure>
+       `;
     }
 
 }

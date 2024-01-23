@@ -27,11 +27,24 @@ class NavBar extends HTMLElement {
 
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
-            <style>
-                @import url('src/components/css/nav-bar.css');
-            </style>
-            <slot></slot>
-        `;
+<style>
+    :host {
+        display: grid;
+        gap: 3rem;
+        padding: 2rem;
+        place-self: center;
+        justify-content: center;
+        grid-template-columns: repeat(5, 1fr);
+
+    }
+
+    ::slotted(a.active) {
+        font-weight: bold;
+    }
+
+</style>
+<slot></slot>
+       `;
     }
 
     private addEventListeners(): void {

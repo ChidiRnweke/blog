@@ -31,14 +31,31 @@ export class SequentialSlider extends HTMLElement {
 
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
-        <style>
-            @import url('src/components/css/sequential-slider.css');
-        </style>
-        <slot></slot>
-        <div class="navigation-buttons">
-            <slot name="previous-button"></slot>
-            <slot name="next-button"></slot>
-        </div>
+<style>
+    ::slotted(:not(.active)) {
+        display: none;
+    }
+
+
+    ::slotted(.active) {
+        display: block;
+    }
+
+    .navigation-buttons {
+        display: flex;
+        margin-top: 1vw;
+        padding: 1rem 0rem;
+        align-items: center;
+
+    }
+
+</style>
+<slot></slot>
+<div class="navigation-buttons">
+    <slot name="previous-button"></slot>
+    <slot name="next-button"></slot>
+</div>
+
       `;
 
     }
