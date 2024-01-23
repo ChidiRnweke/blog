@@ -1,9 +1,11 @@
 :host {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 5rem);
     gap: 3rem;
     padding: 2rem;
+    place-self: center;
     justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+
 }
 
 ::slotted(a.active) {
