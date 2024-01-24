@@ -40,23 +40,11 @@ class ProjectCard extends HTMLElement {
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
 <style>
-    :host {
-        display: grid;
-        grid-template-areas:
-            "image"
-            "text";
-        grid-template-columns: 1fr;
-        grid-template-rows: min-content;
-    }
-
-
     slot[name="caption"]::slotted(*) {
-        grid-area: text;
         margin-top: 0;
     }
 
     ::slotted(img) {
-        grid-area: image;
         max-width: 100%;
         height: auto;
         display: block;
