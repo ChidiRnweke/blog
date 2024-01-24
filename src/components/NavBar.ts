@@ -30,11 +30,11 @@ class NavBar extends HTMLElement {
 <style>
     :host {
         display: grid;
-        gap: 3rem;
+        gap: 1rem;
+        max-width: 100%;
         padding: 2rem;
-        place-self: center;
-        justify-content: center;
-        grid-template-columns: repeat(5, 1fr);
+        place-items: center;
+        grid-template-columns: repeat(auto-fill, minmax(1rem, 1fr));
 
     }
 
