@@ -32,9 +32,9 @@ class NavBar extends HTMLElement {
         display: grid;
         gap: 1rem;
         max-width: 100%;
-        padding: 2rem;
         place-items: center;
-        grid-template-columns: repeat(auto-fill, minmax(1rem, 1fr));
+        padding: 1rem 0;
+        grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
 
     }
 
