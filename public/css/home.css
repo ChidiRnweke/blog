@@ -18,11 +18,6 @@ body {
     --error-color: #dc3545;
 }
 
-main {
-    display: inline-grid;
-    grid-template-columns: 1fr;
-}
-
 a {
     color: var(--primary-color);
     text-decoration: none;
@@ -59,10 +54,6 @@ hero-section section p {
     text-shadow: 0.15rem 0.15rem 0.25rem rgba(0, 0, 0, 1);
 }
 
-header {
-    display: flex;
-}
-
 .text-stuff {
     text-align: right;
 }
@@ -71,13 +62,14 @@ nav-bar a {
     text-decoration: none;
     color: var(--foreground-color);
     transition: color 0.3s ease;
+    word-wrap: break-word;
+
 }
 
 .main-grid {
     display: grid;
     grid-auto-rows: min-content;
     grid-template-columns: 1fr;
-    row-gap: 3rem;
     margin-top: 0.5rem;
     grid-template-areas:
         "description"
@@ -86,8 +78,6 @@ nav-bar a {
         "experience"
     ;
 }
-
-
 
 .skills {
     grid-area: skills;
@@ -112,11 +102,16 @@ nav-bar a {
     align-items: center;
 }
 
+.experience-text p,
+.skills-text p {
+    margin-top: 0;
+}
+
 .skills h2,
 .skills-text,
 .experience h2,
 .experience-text {
-    padding: 1rem;
+    padding: 0 1rem;
     text-align: center;
     align-self: center;
 }
@@ -139,8 +134,8 @@ nav-bar a {
     .main-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        row-gap: 1rem;
         column-gap: 3rem;
+        row-gap: 1rem;
         margin-top: 0.5rem;
         grid-template-areas:
             "skills . experience"
@@ -195,16 +190,13 @@ nav-bar a {
 
 }
 
-
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     column-gap: 0.2rem;
-    grid-template-areas: "picture text";
+    max-width: 100%;
+    place-items: center;
 }
-
-
-
 
 .experience picture,
 .skills picture {
@@ -231,14 +223,15 @@ h2,
 project-card p,
 .recent-articles {
     text-align: center;
+    word-wrap: break-word;
 }
 
 
 
 project-card p {
     background-color: var(--background-alt);
-    padding: 3rem;
     border-bottom-left-radius: 0.5rem;
+    padding: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     box-shadow: 0 0.5rem 1rem -0.2rem rgba(0, 0, 0, 0.8);
 }
