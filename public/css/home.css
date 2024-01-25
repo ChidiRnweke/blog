@@ -36,7 +36,6 @@ header {
     flex-direction: row;
     justify-content: space-between;
     place-items: center;
-    padding: 1rem;
 }
 
 .dark {
