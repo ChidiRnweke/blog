@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>Chidi Nweke</title>
     <link rel="stylesheet" href="/css/home.css">
-
     <script type="module" src="/src/router.ts"></script>
     <script type="module" src="/src/pages/home.ts"></script>
     <script type="module" src="/src/components/NavBar.ts"></script>
@@ -14,6 +13,8 @@
     <script type="module" src="/src/components/SequentialSlider.ts"></script>
     <script type="module" src="/src/components/ProjectCard.ts"></script>
     <script type="module" src="/src/components/PageLink.ts"></script>
+    <script type="module" src="/src/components/PageLink.ts"></script>
+    <script type="module" src="/src/components/ExternalClickableImage.ts"></script>
 
 </head>
 
@@ -123,13 +124,20 @@
     <header>
         <nav-bar>
             <page-link href="/personal-site/" page-name="home">Home</page-link>
-            <page-link href="/personal-site rticles" page-name="articles">Articles</page-link>
+            <page-link href="/personal-site/articles" page-name="articles">Articles</page-link>
             <page-link href="/personal-site/games" page-name="games">Games</page-link>
-            <page-link href="/personal-site/contact" page-name="contact">Contact</page-link>
+
         </nav-bar>
     </header>
     <main></main>
-    <footer>hello</footer>
+    <footer>
+        <external-clickable-image href="https:/www.linkedin.com">
+            <img src="images/linkedin.png" slot="image">
+        </external-clickable-image>
+        <external-clickable-image href="https://www.instagram.com">
+            <img src="images/instagram.png" slot="image">
+        </external-clickable-image>
+    </footer>
 </body>
 
 </html>
