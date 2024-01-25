@@ -241,6 +241,9 @@ project-card p,
     word-wrap: break-word;
 }
 
+project-card {
+    min-width: 200px;
+}
 
 
 project-card p {
