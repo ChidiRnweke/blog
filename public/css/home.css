@@ -11,11 +11,45 @@ body {
 :root {
     --primary-color: #1a73e8;
     --secondary-color: #0f62fe;
+    --accent-color: var(--secondary-color);
     --background-color: #ffffff;
     --background-alt: #faf3e0;
     --foreground-color: #333333;
     --subtle-color: #606060;
     --error-color: #dc3545;
+    --logo-bg: transparent;
+}
+
+body.dark-theme {
+    --primary-color: #BB86FC;
+    --accent-color: #03DAC5;
+    --secondary-color: #C792EA;
+    --background-color: #1F1B24;
+    --background-alt: #2C2C2C;
+    --foreground-color: #ffffff;
+    --subtle-color: #b0b0b0;
+    --error-color: #ff6b6b;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    place-items: center;
+    padding: 1rem;
+}
+
+.dark {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    gap: 1rem;
+    color: var(--primary-color);
+}
+
+
+strong {
+    color: var(--accent-color);
 }
 
 page-link {
@@ -250,6 +284,5 @@ footer .contact {
 footer .contact img {
     max-width: 25px;
     height: auto;
-    background-color: transparent;
     display: block;
 }

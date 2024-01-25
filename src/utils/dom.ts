@@ -20,3 +20,11 @@ export const getOptionalAttribute = (source: HTMLElement, name: string): string 
     const value = source.getAttribute(name);
     return value ? `${name}="${value}"` : ""
 }
+
+export const getLocalStorageOrThrow = (key: string): string => {
+    const value = localStorage.getItem(key);
+    if (value === null) {
+        throw new Error(`Required key ${key} was expected to be in local storage.`);
+    }
+    return value
+}

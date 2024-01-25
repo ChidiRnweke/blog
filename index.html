@@ -15,6 +15,8 @@
     <script type="module" src="/src/components/PageLink.ts"></script>
     <script type="module" src="/src/components/PageLink.ts"></script>
     <script type="module" src="/src/components/ExternalClickableImage.ts"></script>
+    <script type="module" src="/src/components/DarkModeToggle.ts"></script>
+
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
 
 </head>
@@ -34,10 +36,10 @@
                     </picture>
 
                     <div class="skills-text">
-                        <p>Solving problems using machine learning</p>
-                        <p>Typesafe programming with Scala</p>
-                        <p>Setting up data pipelines that scale</p>
-                        <p>Anything that satisfies my curiosity</p>
+                        <p>Solving problems using <strong>machine learning</strong></p>
+                        <p>Typesafe programming with <strong>Scala</strong></p>
+                        <p>Setting up <strong>data pipelines</strong> that scale</p>
+                        <p>Anything that satisfies my <strong>curiosity</strong></p>
                         <p>Travel, having a beer or two, and great music</p>
                     </div>
                 </div>
@@ -79,10 +81,10 @@
                     </picture>
 
                     <div class="experience-text">
-                        <p>Modelling glucose levels for T1DM patients</p>
-                        <p>AI-photo booth at a large music festival</p>
-                        <p>Creating data science learning material</p>
-                        <p>Data analysis in manufacturing, sociology, finance and more</p>
+                        <p><strong>Modelling glucose</strong> levels for T1DM patients</p>
+                        <p><strong>AI photo booth</strong> at a large music festival</p>
+                        <p>Creating data science <strong>learning material</strong></p>
+                        <p><strong>Data analysis</strong> in manufacturing, sociology, finance and more</p>
                     </div>
                 </div>
             </section>
@@ -130,8 +132,14 @@
             <page-link href="./" page-name="home">Home</page-link>
             <page-link href="articles" page-name="articles">Articles</page-link>
             <page-link href="games" page-name="games">Games</page-link>
-
         </nav-bar>
+        <div class="dark">
+            <p>
+                Dark mode
+            </p>
+            <dark-mode-toggle></dark-mode-toggle>
+        </div>
+
     </header>
     <main></main>
     <footer>
