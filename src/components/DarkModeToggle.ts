@@ -11,7 +11,7 @@ class DarkModeToggle extends HTMLElement {
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
 <style>
-  .switch {
+    .switch {
     position: relative;
     display: inline-block;
     width: 4rem;
@@ -76,12 +76,26 @@ class DarkModeToggle extends HTMLElement {
   .slider.round:before {
     border-radius: 50%;
   }
-</style>
 
-<label class="switch">
-  <input type="checkbox" class="toggle">
-  <span class="slider round"></span>
-</label>
+  .dark {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+</style>
+<div class="dark">
+    <p>
+        ☀️
+    </p>
+    <label class="switch">
+        <input type="checkbox" class="toggle">
+        <span class="slider round"></span>
+    </label>
+</div>
        `;
     }
     public connectedCallback(): void {
@@ -106,6 +120,8 @@ class DarkModeToggle extends HTMLElement {
             document.body.classList.remove("dark-theme");
             toggle.checked = false;
         }
+        this.setSymbol(toggle.checked);
+
     }
 
     private initiateLocalStorage() {
@@ -123,10 +139,18 @@ class DarkModeToggle extends HTMLElement {
     }
 
     private handleDarkModeToggle(isDarkMode: boolean): void {
+        this.setSymbol(isDarkMode);
+
         document.body.classList.toggle('dark-theme', isDarkMode);
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
     }
 
+
+    private setSymbol(isDarkMode: boolean) {
+        const symbol = getElementOrThrow(this.shadowRoot!, "p");
+        symbol.innerHTML = isDarkMode ? '☀️' : '🌑';
+    }
 }
 customElements.define('dark-mode-toggle', DarkModeToggle);
 

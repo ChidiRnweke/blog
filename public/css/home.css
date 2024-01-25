@@ -36,15 +36,10 @@ header {
     flex-direction: row;
     justify-content: space-between;
     place-items: center;
+    margin-right: 2rem;
+    margin-left: 2rem
 }
 
-.dark {
-    display: flex;
-    flex-direction: row;
-    place-items: center;
-    gap: 1rem;
-    color: var(--primary-color);
-}
 
 
 strong {
