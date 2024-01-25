@@ -1,15 +1,17 @@
-import { getElementOrThrow, getLocalStorageOrThrow } from "../utils/dom";
+import { getAttributeOrThrow, getElementOrThrow, getLocalStorageOrThrow } from "../utils/dom";
 
 class DarkModeToggle extends HTMLElement {
-    public link!: string;
-    public constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.render();
-    }
+  public link!: string;
+  public toggleableImages!: NodeListOf<HTMLImageElement>;
 
-    private render(): void {
-        this.shadowRoot!.innerHTML = /*html*/`
+  public constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.render();
+  }
+
+  private render(): void {
+    this.shadowRoot!.innerHTML = /*html*/`
 <style>
     .switch {
     position: relative;
@@ -97,60 +99,83 @@ class DarkModeToggle extends HTMLElement {
     </label>
 </div>
        `;
-    }
-    public connectedCallback(): void {
-        this.addEventListeners();
-        this.initializeDarkMode()
+  }
+  public connectedCallback(): void {
+    this.addEventListeners();
+    this.initializeDarkMode();
 
-    }
+  }
 
-    private initializeDarkMode(): void {
-        const noExistingTheme = localStorage.getItem('theme');
-        const toggle = getElementOrThrow(this.shadowRoot!, '.toggle') as HTMLInputElement;
+  private initializeDarkMode(): void {
+    const noExistingTheme = localStorage.getItem('theme');
+    const toggle = getElementOrThrow(this.shadowRoot!, '.toggle') as HTMLInputElement;
 
-        if (!noExistingTheme) {
-            this.initiateLocalStorage();
-        }
-
-        const currentTheme = getLocalStorageOrThrow('theme')!;
-        if (currentTheme === "dark") {
-            document.body.classList.add("dark-theme");
-            toggle.checked = true;
-        } else {
-            document.body.classList.remove("dark-theme");
-            toggle.checked = false;
-        }
-        this.setSymbol(toggle.checked);
-
+    if (!noExistingTheme) {
+      this.initiateLocalStorage();
     }
 
-    private initiateLocalStorage() {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            localStorage.setItem("theme", "dark");
-        }
-        else {
-            localStorage.setItem("theme", "light")
-        }
+    const currentTheme = getLocalStorageOrThrow('theme')!;
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-theme");
+      toggle.checked = true;
+    } else {
+      document.body.classList.remove("dark-theme");
+      toggle.checked = false;
     }
+    this.setSymbol(toggle.checked);
 
-    private addEventListeners(): void {
-        const toggle = getElementOrThrow(this.shadowRoot!, '.toggle') as HTMLInputElement;
-        toggle.addEventListener('click', () => this.handleDarkModeToggle(toggle.checked));
+    this.toggleableImages = document.querySelectorAll<HTMLImageElement>(".dark-toggle");
+    const images = document.querySelectorAll<HTMLImageElement>(".dark-toggle");
+    images.forEach((img) => this.initializeImage(img));
+  }
+
+  private initiateLocalStorage() {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      localStorage.setItem("theme", "dark");
     }
-
-    private handleDarkModeToggle(isDarkMode: boolean): void {
-        this.setSymbol(isDarkMode);
-
-        document.body.classList.toggle('dark-theme', isDarkMode);
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-
+    else {
+      localStorage.setItem("theme", "light")
     }
+  }
 
+  private addEventListeners(): void {
+    const toggle = getElementOrThrow(this.shadowRoot!, '.toggle') as HTMLInputElement;
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.handleDarkModeToggle(toggle.checked);
+      this.toggleableImages.forEach(img => this.toggleImage(img));
+    });
+  }
 
-    private setSymbol(isDarkMode: boolean) {
-        const symbol = getElementOrThrow(this.shadowRoot!, "p");
-        symbol.innerHTML = isDarkMode ? '☀️' : '🌑';
+  private handleDarkModeToggle(isDarkMode: boolean): void {
+    this.setSymbol(isDarkMode);
+
+    document.body.classList.toggle('dark-theme', isDarkMode);
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+  }
+
+  private setSymbol(isDarkMode: boolean) {
+    const symbol = getElementOrThrow(this.shadowRoot!, "p");
+    symbol.innerHTML = isDarkMode ? '☀️' : '🌑';
+  }
+
+  private initializeImage(image: HTMLImageElement) {
+    const currentTheme = getLocalStorageOrThrow("theme");
+    if (currentTheme === "dark") {
+      this.toggleImage(image);
     }
+  }
+
+  private toggleImage(image: HTMLImageElement) {
+    const imageAlt = getAttributeOrThrow(image, "data-alt-src");
+    image.setAttribute("data-alt-src", image.src);
+    image.src = imageAlt;
+  }
+
 }
+
+
+
 customElements.define('dark-mode-toggle', DarkModeToggle);
 
