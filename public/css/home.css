@@ -102,6 +102,8 @@ nav-bar page-link {
 .skills-text,
 .experience-text {
     align-items: center;
+    padding: 0 1rem;
+    color: var(--subtle-color);
 }
 
 .experience-text p,
@@ -109,10 +111,6 @@ nav-bar page-link {
     margin-top: 0;
 }
 
-.skills-text,
-.experience-text {
-    padding: 0 1rem;
-}
 
 .skills-container {
     gap: 1rem;
@@ -180,11 +178,10 @@ nav-bar page-link {
 }
 
 .projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    column-gap: 0.2rem;
+    display: flex;
+    flex-wrap: wrap;
     max-width: 100%;
-    place-items: center;
+    gap: 0.2rem;
 }
 
 .experience picture,
@@ -218,6 +215,8 @@ project-card p,
 
 
 project-card p {
+    box-sizing: border-box;
+    max-width: 200px;
     background-color: var(--background-alt);
     border-bottom-left-radius: 0.5rem;
     padding: 0.5rem;
@@ -235,7 +234,7 @@ project-card img {
 footer {
     text-align: center;
     padding: 1rem;
-
+    color: var(--subtle-color);
 }
 
 footer .contact {
