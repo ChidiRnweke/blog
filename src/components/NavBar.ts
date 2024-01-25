@@ -1,8 +1,5 @@
-import { navigateTo } from "../router";
-import { getAttributeOrThrow } from "../utils/dom";
-
 class NavBar extends HTMLElement {
-    private navItems!: NodeListOf<HTMLAnchorElement>;
+    private navItems!: NodeListOf<HTMLElement>;
 
     public constructor() {
         super();
@@ -16,10 +13,9 @@ class NavBar extends HTMLElement {
     }
 
     private initializeNav() {
-        this.navItems = this.querySelectorAll('a');
-
+        this.navItems = this.querySelectorAll('page-link');
         if (this.navItems.length == 0) {
-            throw Error("Each nav card must have at least one anchor element.")
+            throw Error("Each nav card must have at least one link.")
         }
 
         this.navItems[0].classList.add('active');
@@ -38,7 +34,7 @@ class NavBar extends HTMLElement {
 
     }
 
-    ::slotted(a.active) {
+    ::slotted(page-link.active) {
         font-weight: bold;
     }
 
@@ -52,21 +48,16 @@ class NavBar extends HTMLElement {
     }
 
     private handleNavClick(event: MouseEvent): void {
-        const target = event.target as HTMLAnchorElement;
-        if (target.tagName === 'A') {
-            event.preventDefault();
-            const pageKey = getAttributeOrThrow(target, 'page-name')
-            const path = getAttributeOrThrow(target, 'href');
-            this.setActiveItem(target);
-            navigateTo(pageKey, path);
-        }
+        const target = event.target as HTMLElement;
+        this.setActiveItem(target);
     }
 
-    private setActiveItem(newActiveItem: HTMLAnchorElement): void {
+
+    private setActiveItem(newActiveItem: HTMLElement): void {
         this.navItems.forEach(item => item.classList.remove('active'));
         newActiveItem.classList.add('active');
     }
-}
 
+}
 customElements.define('nav-bar', NavBar);
 

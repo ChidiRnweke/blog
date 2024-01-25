@@ -13,6 +13,8 @@
     <script type="module" src="/src/components/HeroSection.ts"></script>
     <script type="module" src="/src/components/SequentialSlider.ts"></script>
     <script type="module" src="/src/components/ProjectCard.ts"></script>
+    <script type="module" src="/src/components/PageLink.ts"></script>
+
 </head>
 
 <template id="home">
@@ -39,16 +41,32 @@
             </section>
             <section class="recent-articles">
                 <h2>Recent articles</h2>
-                <p><a href="/personal-site/jetML">Writing your own machine learning library: introducing JetML</a></p>
+                <p>
+                    <page-link href="/personal-site/jetML" page-name="jetML">Writing your own machine learning library:
+                        introducing JetML
+                    </page-link>
+                </p>
+                <p>
+                    <page-link href="/personal-site/vanillaWeb" page-name="vanillaJS"> How I made this site using
+                        vanilla JS: a crash course
+                    </page-link>
+                </p>
+                <p>
+                    <page-link href="/personal-site/scala3py4" page-name="scala3py4">Scala 3 is Python 4 ... or is
+                        it?
+                    </page-link>
+                </p>
 
-                <p><a href="/personal-site/vanillaWeb"> How I made this site using vanilla JS: a crash course</a></p>
-
-                <p><a href="/personal-site/scala3py4">Scala 3 is Python 4 ... or is it?</a></p>
-
-                <p><a href="/personal-site/dataEngineeringTrenches">Lessons learnt from the trenches: Data
-                        engineering</a></p>
-
-                <p><a href="/personal-site/learningAI">How you should learn AI in 202X</a></p>
+                <p><page-link href="/personal-site/dataEngineeringTrenches" page-name="dataEngineeringTrenches">Lessons
+                        learnt from the trenches: Data
+                        engineering
+                    </page-link>
+                </p>
+                <p>
+                    <page-link page-name="learningAI" href="/personal-site/learningAI">How you should learn AI in
+                        202X
+                    </page-link>
+                </p>
             </section>
             <section class="experience">
                 <h2>Experience</h2>
@@ -104,10 +122,10 @@
 <body>
     <header>
         <nav-bar>
-            <a href="/personal-site/" page-name="home">Home</a>
-            <a href="/personal-site/articles" page-name="articles">Articles</a>
-            <a href="/personal-site/games" page-name="games">Games</a>
-            <a href="/personal-site/contact" page-name="contact">Contact</a>
+            <page-link href="/personal-site/" page-name="home">Home</page-link>
+            <page-link href="/personal-site rticles" page-name="articles">Articles</page-link>
+            <page-link href="/personal-site/games" page-name="games">Games</page-link>
+            <page-link href="/personal-site/contact" page-name="contact">Contact</page-link>
         </nav-bar>
     </header>
     <main></main>

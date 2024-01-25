@@ -18,14 +18,13 @@ body {
     --error-color: #dc3545;
 }
 
-a {
+page-link {
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
     transition: all 0.3s ease;
 }
 
-a:hover {
+page-link:hover {
     color: var(--secondary-color);
     text-decoration: underline;
 
@@ -58,7 +57,7 @@ hero-section section p {
     text-align: right;
 }
 
-nav-bar a {
+nav-bar page-link {
     text-decoration: none;
     color: var(--foreground-color);
     transition: color 0.3s ease;
