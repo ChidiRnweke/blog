@@ -10,4 +10,4 @@ export const homePage: Page = {
     // }
 }
 
-router.addRoute('/personal-site/', homePage);
+router.addRoute('/blog/', homePage);

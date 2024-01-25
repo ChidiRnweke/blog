@@ -64,8 +64,8 @@ const notFoundPage: Page = {
     templateId: 'page-not-found',
     onRender: () => {
         const homeButton = getElementOrThrow<HTMLButtonElement>(document, "#back-home");
-        homeButton.addEventListener('click', () => navigateTo('home', "/personal-site/"));
+        homeButton.addEventListener('click', () => navigateTo('home', "./"));
     }
 }
 
-router.addRoute('/personal-site/not-found', notFoundPage);
+router.addRoute('not-found/', notFoundPage);

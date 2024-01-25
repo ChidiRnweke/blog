@@ -1,3 +1,3 @@
 export default {
-    base: '/personal-site/'
+    base: '/blog/'
 }
