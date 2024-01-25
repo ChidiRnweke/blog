@@ -15,13 +15,14 @@
     <script type="module" src="/src/components/PageLink.ts"></script>
     <script type="module" src="/src/components/PageLink.ts"></script>
     <script type="module" src="/src/components/ExternalClickableImage.ts"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
 
 </head>
 
 <template id="home">
     <main>
-        <hero-section style="--background-image: url('/personal-site/images/bg.jpg')">
-            <img slot="image" src="/personal-site/images/portrait.png" alt="Foreground Image">
+        <hero-section style="--background-image: url('images/bg.jpg')">
+            <img slot="image" src="images/portrait.png" alt="Foreground Image">
         </hero-section>
 
         <div class="main-grid">
@@ -29,7 +30,7 @@
                 <h2>Interests</h2>
                 <div class="skills-container">
                     <picture>
-                        <img src="/personal-site/images/beach.jpg">
+                        <img src="images/beach.jpg">
                     </picture>
 
                     <div class="skills-text">
@@ -43,28 +44,28 @@
             <section class="recent-articles">
                 <h2>Recent articles</h2>
                 <p>
-                    <page-link href="/personal-site/jetML" page-name="jetML">Writing your own machine learning library:
+                    <page-link href="jetML" page-name="jetML">Writing your own machine learning library:
                         introducing JetML
                     </page-link>
                 </p>
                 <p>
-                    <page-link href="/personal-site/vanillaWeb" page-name="vanillaJS"> How I made this site using
+                    <page-link href="vanillaWeb" page-name="vanillaJS"> How I made this site using
                         vanilla JS: a crash course
                     </page-link>
                 </p>
                 <p>
-                    <page-link href="/personal-site/scala3py4" page-name="scala3py4">Scala 3 is Python 4 ... or is
+                    <page-link href="scala3py4" page-name="scala3py4">Scala 3 is Python 4 ... or is
                         it?
                     </page-link>
                 </p>
 
-                <p><page-link href="/personal-site/dataEngineeringTrenches" page-name="dataEngineeringTrenches">Lessons
+                <p><page-link href="dataEngineeringTrenches" page-name="dataEngineeringTrenches">Lessons
                         learnt from the trenches: Data
                         engineering
                     </page-link>
                 </p>
                 <p>
-                    <page-link page-name="learningAI" href="/personal-site/learningAI">How you should learn AI in
+                    <page-link page-name="learningAI" href="learningAI">How you should learn AI in
                         202X
                     </page-link>
                 </p>
@@ -73,7 +74,7 @@
                 <h2>Experience</h2>
                 <div class="experience-container">
                     <picture>
-                        <img src="/personal-site/images/side.jpg">
+                        <img src="images/side.jpg">
                     </picture>
 
                     <div class="experience-text">
@@ -86,23 +87,23 @@
                 <h2>Projects</h2>
                 <div class="projects-container">
                     <project-card>
-                        <img src="/personal-site/images/beach.jpg" slot="image">
+                        <img src="images/beach.jpg" slot="image">
                         <p slot="caption">Beachy road, beachy road</p>
                     </project-card>
                     <project-card>
-                        <img src="/personal-site/images/beach.jpg" slot="image">
+                        <img src="images/beach.jpg" slot="image">
                         <p slot="caption">Beachy road, beachy road</p>
                     </project-card>
                     <project-card>
-                        <img src="/personal-site/images/beach.jpg" slot="image">
+                        <img src="images/beach.jpg" slot="image">
                         <p slot="caption">Beachy road, beachy road</p>
                     </project-card>
                     <project-card>
-                        <img src="/personal-site/images/beach.jpg" slot="image">
+                        <img src="images/beach.jpg" slot="image">
                         <p slot="caption">Beachy road, beachy road</p>
                     </project-card>
                     <project-card>
-                        <img src="/personal-site/images/beach.jpg" slot="image">
+                        <img src="images/beach.jpg" slot="image">
                         <p slot="caption">Beachy road, beachy road</p>
                     </project-card>
                 </div>
@@ -123,9 +124,9 @@
 <body>
     <header>
         <nav-bar>
-            <page-link href="/personal-site/" page-name="home">Home</page-link>
-            <page-link href="/personal-site/articles" page-name="articles">Articles</page-link>
-            <page-link href="/personal-site/games" page-name="games">Games</page-link>
+            <page-link href="" page-name="home">Home</page-link>
+            <page-link href="articles" page-name="articles">Articles</page-link>
+            <page-link href="games" page-name="games">Games</page-link>
 
         </nav-bar>
     </header>
