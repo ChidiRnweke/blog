@@ -40,6 +40,19 @@ class ProjectCard extends HTMLElement {
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
 <style>
+    div {
+        position: relative;
+    }
+
+    slot[name="title"]::slotted(*){
+        position: absolute;
+        z-index: 1;
+        max-width: 100%;
+        background-color: white;
+        color:;
+        text-align: center;
+    }
+
     slot[name="caption"]::slotted(*) {
         margin-top: 0;
     }
@@ -59,8 +72,12 @@ class ProjectCard extends HTMLElement {
 
 </style>
 <figure>
+<div>
+    <slot name="title"></slot>
     <slot name="image"></slot>
     <slot name="caption"></slot>
+</div>
+
 </figure>
        `;
     }
