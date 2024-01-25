@@ -5,9 +5,26 @@ class ExternalClickableImage extends HTMLElement {
     public constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot!.innerHTML = '<slot name="image"></slot>';
+        this.render();
     }
 
+    private render(): void {
+        this.shadowRoot!.innerHTML = /*html*/`
+<style>
+    :host {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    :host:hover {
+        transform: scale(1.05);
+
+    }
+
+</style>
+<slot name="image"></slot>
+       `;
+    }
     public connectedCallback(): void {
         this.addEventListeners();
         this.link = getAttributeOrThrow(this, "href")
