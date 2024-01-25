@@ -15,7 +15,7 @@ class NavBar extends HTMLElement {
     private initializeNav() {
         this.navItems = this.querySelectorAll('page-link');
         if (this.navItems.length == 0) {
-            throw Error("Each nav card must have at least one link.")
+            throw Error("A nav card must have at least one link.")
         }
 
         this.navItems[0].classList.add('active');
@@ -25,12 +25,12 @@ class NavBar extends HTMLElement {
         this.shadowRoot!.innerHTML = /*html*/`
 <style>
     :host {
-        display: grid;
+        display: flex;
+        flex-wrap:wrap;
         gap: 1rem;
         max-width: 100%;
         place-items: center;
         padding: 1rem 0;
-        grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
 
     }
 
