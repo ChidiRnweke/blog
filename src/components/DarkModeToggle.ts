@@ -91,7 +91,6 @@ class DarkModeToggle extends HTMLElement {
 </style>
 <div class="dark">
     <p>
-        ☀️
     </p>
     <label class="switch">
         <input type="checkbox" class="toggle">
