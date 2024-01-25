@@ -109,15 +109,10 @@ nav-bar page-link {
     margin-top: 0;
 }
 
-.skills h2,
 .skills-text,
-.experience h2,
 .experience-text {
     padding: 0 1rem;
-    text-align: center;
-    align-self: center;
 }
-
 
 .skills-container {
     gap: 1rem;
@@ -156,7 +151,6 @@ nav-bar page-link {
 
     }
 
-
     .skills-container {
         grid-template-columns: 2.5fr 1fr;
         grid-template-areas: "text picture";
@@ -167,17 +161,6 @@ nav-bar page-link {
         grid-template-areas: "picture text";
     }
 
-    .skills h2,
-    .skills-text {
-        padding: initial;
-        text-align: right;
-    }
-
-    .experience h2,
-    .experience-text {
-        padding: initial;
-        text-align: left;
-    }
 
 }
 
