@@ -22,11 +22,11 @@ class ProjectCard extends HTMLElement {
         const hasCaption = captionSlot.assignedNodes({ flatten: true }).length > 0;
 
         if (!hasImage) {
-            throw Error('ProjectCard requires an "image" slot to be filled.');
+            throw new Error('ProjectCard requires an "image" slot to be filled.');
         }
 
         if (!hasCaption) {
-            throw Error('ProjectCard requires a "caption" slot to be filled.');
+            throw new Error('ProjectCard requires a "caption" slot to be filled.');
         }
     }
 

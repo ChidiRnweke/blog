@@ -15,7 +15,7 @@ class NavBar extends HTMLElement {
     private initializeNav() {
         this.navItems = this.querySelectorAll('page-link');
         if (this.navItems.length == 0) {
-            throw Error("A nav card must have at least one link.")
+            throw new Error("A nav card must have at least one link.")
         }
 
         this.navItems[0].classList.add('active');
