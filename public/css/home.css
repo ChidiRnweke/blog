@@ -207,7 +207,7 @@ nav-bar page-link {
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     column-gap: 0.2rem;
     max-width: 100%;
     place-items: top;
@@ -248,7 +248,7 @@ project-card {
 
 project-card p {
     box-sizing: border-box;
-    max-width: 200px;
+    max-width: 400px;
     background-color: var(--background-alt);
     border-bottom-left-radius: 0.5rem;
     padding: 0.5rem;
