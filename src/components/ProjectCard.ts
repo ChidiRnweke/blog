@@ -59,7 +59,6 @@ class ProjectCard extends HTMLElement {
 
 </style>
 <figure>
-    <slot name="title"></slot>
     <slot name="image"></slot>
     <slot name="caption"></slot>
 
