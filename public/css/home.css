@@ -266,11 +266,19 @@ project-card {
 project-card section button {
     background-color: var(--secondary-color);
     border-radius: 5px;
-    padding: 0.5rem;
+    padding: 0.8rem;
     place-self: flex-end;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     border: none;
+}
+
+img {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 project-card section button:hover {
