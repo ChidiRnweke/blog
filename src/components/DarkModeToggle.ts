@@ -42,7 +42,7 @@ class DarkModeToggle extends HTMLElement {
 
   .dark p {
     position: absolute;
-    top: -1.55rem;
+    top: -1.5rem;
     left: 0;
     right: 0;
     bottom: 0;
@@ -64,7 +64,6 @@ class DarkModeToggle extends HTMLElement {
 
   .dark {
     position: relative;
-    gap: 0.5rem;
     font-size: 1.5rem;
     opacity:  85%;
 }
