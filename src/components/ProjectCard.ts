@@ -53,7 +53,7 @@ class ProjectCard extends HTMLElement {
         margin-bottom: 0;
     }
 
-    ::slotted(img:hover) {
+    :hover ::slotted(img) {
         filter: none;
     }
 
