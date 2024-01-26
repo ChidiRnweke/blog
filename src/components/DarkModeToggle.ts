@@ -42,10 +42,10 @@ class DarkModeToggle extends HTMLElement {
 
   .dark p {
     position: absolute;
-    top: -1.5rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -1.55rem;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
     transition: .4s;
     border-radius: 50%;
   }
