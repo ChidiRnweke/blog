@@ -28,6 +28,7 @@ class DarkModeToggle extends HTMLElement {
 
   .slider {
     position: absolute;
+    display: block;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -38,63 +39,50 @@ class DarkModeToggle extends HTMLElement {
     border-radius: 2rem;
   }
 
-  .slider:before {
+
+  .dark p {
     position: absolute;
-    content: "";
-    height: 1.5rem;
-    width: 1.5rem;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
+    top: -1.55rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
     transition: .4s;
     border-radius: 50%;
   }
 
-  input:checked + .slider {
+  input:checked ~ .slider {
     background-color: #2196F3;
   }
 
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3; 
-  }
+  input:focus ~ .slider {
+      box-shadow: 0 0 1px #2196F3; 
+    }
 
-  input:checked + .slider:before {
+  input:checked ~ p {
     transform: translateX(2rem); 
   }
 
-
-  body.dark-theme .slider {
-    background-color: #4D4D4D; /
-  }
-
-  body.dark-theme .slider:before {
-    background-color: #BFBFBF; 
-  }
-
-  .slider.round {
-    border-radius: 2rem;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
-  }
-
   .dark {
-    display: flex;
-    flex-direction: row;
-    place-items: center;
+    position: relative;
     gap: 0.5rem;
-    color: var(--primary-color);
     font-size: 1.5rem;
+    opacity:  85%;
+}
+
+p {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 </style>
 <div class="dark">
-    <p>
-    </p>
     <label class="switch">
         <input type="checkbox" class="toggle">
         <span class="slider round"></span>
+        <p></p>
     </label>
 </div>
        `;
