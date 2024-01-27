@@ -142,7 +142,7 @@ p {
 
   private setSymbol(isDarkMode: boolean) {
     const symbol = getElementOrThrow(this.shadowRoot!, "p");
-    symbol.innerHTML = isDarkMode ? '☀️' : '🌒';
+    symbol.innerHTML = isDarkMode ? '🌒' : '☀️';
   }
 
   private initializeImage(image: HTMLImageElement) {
