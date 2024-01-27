@@ -30,7 +30,6 @@ class NavBar extends HTMLElement {
         gap: 1rem;
         max-width: 100%;
         place-items: center;
-        padding: 1rem 0;
 
     }
 
