@@ -15,12 +15,14 @@ class DarkModeToggle extends HTMLElement {
 <style>
     .switch {
     position: relative;
-    display: inline-block;
+    display: flex;
     width: 4rem;
     height: 2rem;
+    place-items: center;
   }
 
   .switch .toggle {
+    position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
@@ -41,14 +43,11 @@ class DarkModeToggle extends HTMLElement {
 
 
   .dark p {
-    position: absolute;
-    top: -1.3rem;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
+    position: relative;
     transition: .4s;
     border-radius: 50%;
   }
+
 
   input:checked ~ .slider {
     background-color: #2196F3;
