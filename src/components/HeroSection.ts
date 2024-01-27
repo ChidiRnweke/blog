@@ -20,16 +20,6 @@ class HeroSection extends HTMLElement {
         border-top-right-radius: 2rem;
     }
 
-    ::slotted(img) {
-        justify-self: center;
-        height: auto;
-        margin-top: 2rem;
-        max-width: 70%;
-        margin-bottom: -3rem;
-        border-radius: 50%;
-        box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.8);
-    }
-
 </style>
 <slot name="image"></slot>
        `;

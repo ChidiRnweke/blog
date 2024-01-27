@@ -8,6 +8,21 @@ body {
     color: var(--foreground-color);
 }
 
+hero-section {
+    min-height: 200px;
+}
+
+hero-section img {
+    min-height: 217px;
+    justify-self: center;
+    height: auto;
+    margin-top: 2rem;
+    max-width: 70%;
+    margin-bottom: -3rem;
+    border-radius: 50%;
+    box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.8);
+}
+
 :root {
     --primary-color: #1a73e8;
     --secondary-color: #4db8ac;
@@ -20,7 +35,7 @@ body {
     --logo-bg: transparent;
 }
 
-body.dark-theme {
+.dark-theme {
     --primary-color: #BB86FC;
     --accent-color: #03DAC5;
     --secondary-color: #C792EA;
@@ -157,6 +172,10 @@ nav-bar page-link {
     .experience-container,
     .skills-container {
         font-size: 1.5rem;
+    }
+
+    hero-section {
+        min-height: 382px;
     }
 }
 
