@@ -101,10 +101,10 @@ p {
 
     const currentTheme = getLocalStorageOrThrow('theme')!;
     if (currentTheme === "dark") {
-      document.body.classList.add("dark-theme");
+      document.documentElement.classList.add("dark-theme");
       toggle.checked = true;
     } else {
-      document.body.classList.remove("dark-theme");
+      document.documentElement.classList.remove("dark-theme");
       toggle.checked = false;
     }
     this.setSymbol(toggle.checked);
@@ -135,7 +135,7 @@ p {
   private handleDarkModeToggle(isDarkMode: boolean): void {
     this.setSymbol(isDarkMode);
 
-    document.body.classList.toggle('dark-theme', isDarkMode);
+    document.documentElement.classList.toggle('dark-theme', isDarkMode);
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 
   }
