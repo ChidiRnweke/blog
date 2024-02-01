@@ -8,7 +8,7 @@ On a nice day in late 2023 I was [doomscrolling](https://en.wikipedia.org/wiki/D
 
 Initially, I brushed it off as just another hot take. However, the thought lingered longer than I expected. Was there a grain of truth to this comparison?
 
-Since I want to have readers ~~of a diverse background~~ so here's some context you need to be fully up to speed. Scala's leap from version 2 to 3 introduced a bunch of [new features](https://docs.scala-lang.org/scala3/new-in-scala3.html), most of which were met with enthusiasm—or at least a nod of approval—within the community. Yet, the introduction of an **optional** Python-style indentation syntax sparked the most debate.
+Since I want to have readers ~~of a diverse background~~ here's some context you need to be fully up to speed. Scala's leap from version 2 to 3 introduced a bunch of [new features](https://docs.scala-lang.org/scala3/new-in-scala3.html), most of which were met with enthusiasm—or at least a nod of approval—within the community. Yet, the introduction of an **optional** Python-style indentation syntax sparked the most debate.
 
 We'll kick things off by examining a simple temperature conversion program written in both Python and Scala to get your feet wet. The scenario involves cities with temperatures in either Celsius or Fahrenheit, which we'll convert and display in both units.
 
