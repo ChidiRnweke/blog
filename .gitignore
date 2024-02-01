@@ -22,4 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-articles
+articles/*.html
+src/articles/*.html
