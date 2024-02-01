@@ -13,7 +13,7 @@ class NavBar extends HTMLElement {
     }
 
     private initializeNav() {
-        this.navItems = this.querySelectorAll('page-link');
+        this.navItems = this.querySelectorAll('a');
         if (this.navItems.length == 0) {
             throw new Error("A nav card must have at least one link.")
         }

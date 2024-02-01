@@ -6,130 +6,123 @@
     <!--head-->
 </head>
 
-<template id="home">
-    <hero-section style="--background-image: url('images/bg.jpg')">
-        <img slot="image" src="images/portrait.png" alt="Foreground Image">
-    </hero-section>
 
-    <div class="main-grid">
-        <section class="skills">
-            <h2>Personal Interests</h2>
-            <div class="skills-container">
-                <picture>
-                    <img src="images/beach.jpg">
-                </picture>
-
-                <div class="skills-text">
-                    <p>Solving problems using <strong>machine learning</strong></p>
-                    <p>Typesafe programming with <strong>Scala</strong></p>
-                    <p>Setting up <strong>data pipelines</strong> that scale</p>
-                    <p>Anything that satisfies my <strong>curiosity</strong></p>
-                    <p><strong>Traveling</strong>, having a beer or two, and great music</p>
-                </div>
-            </div>
-        </section>
-        <section class="recent-articles">
-            <h2>Recent articles</h2>
-            <p>
-                <page-link href="jetML" page-name="jetML">Writing your own machine learning library:
-                    introducing JetML
-                </page-link>
-            </p>
-            <p>
-                <page-link href="vanillaWeb" page-name="vanillaJS"> How I made this site using
-                    vanilla JS: a crash course
-                </page-link>
-            </p>
-            <p>
-                <page-link href="scala3py4" page-name="scala3py4">Scala 3 is Python 4 ... or is
-                    it?
-                </page-link>
-            </p>
-
-            <p><page-link href="dataEngineeringTrenches" page-name="dataEngineeringTrenches">Lessons
-                    learnt from the trenches: Data
-                    engineering
-                </page-link>
-            </p>
-            <p>
-                <page-link page-name="learningAI" href="learningAI">How you should learn AI in
-                    202X
-                </page-link>
-            </p>
-        </section>
-        <section class="experience">
-            <h2>Select Projects</h2>
-            <div class="experience-container">
-                <picture>
-                    <img src="images/side.jpg">
-                </picture>
-
-                <div class="experience-text">
-                    <p><strong>Modelling glucose</strong> levels for T1DM patients</p>
-                    <p><strong>AI photo booth</strong> at a large music festival</p>
-                    <p>Creating data science <strong>learning material</strong></p>
-                    <p><strong>Data analysis</strong> in manufacturing, sociology, finance and more</p>
-                </div>
-            </div>
-        </section>
-        <section class="projects">
-            <h2>Projects</h2>
-            <div class="projects-container">
-                <project-card>
-                    <img src="images/beach34.jpg" slot="image">
-                    <section slot="caption">
-                        <h3>Work in progress</h3>
-                        <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                        <button>Learn more.</button>
-                    </section>
-                </project-card>
-                <project-card>
-                    <img src="images/beach34.jpg" slot="image">
-                    <section slot="caption">
-                        <h3>Work in progress</h3>
-                        <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                        <button>Learn more.</button>
-                    </section>
-                </project-card>
-                <project-card>
-                    <img src="images/beach34.jpg" slot="image">
-                    <section slot="caption">
-                        <h3>Work in progress</h3>
-                        <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                        <button>Learn more.</button>
-                    </section>
-                </project-card>
-                <project-card>
-                    <img src="images/beach34.jpg" slot="image">
-                    <section slot="caption">
-                        <h3>Work in progress</h3>
-                        <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                        <button>Learn more.</button>
-                    </section>
-                </project-card>
-                <project-card>
-                    <img src="images/beach34.jpg" slot="image">
-                    <section slot="caption">
-                        <h3>Work in progress</h3>
-                        <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                        <button>Learn more.</button>
-                    </section>
-                </project-card>
-            </div>
-        </section>
-    </div>
-
-</template>
-
-<template id="page-not-found">
-    <h1>404</h1>
-    <p>The page you're looking for cannot be found.</p>
-    <button id="back-home">Go to Home</button>
-</template>
 
 <body>
     <!--header-->
-    <main></main>
+    <main>
+        <hero-section style="--background-image: url('images/bg.jpg')">
+            <img slot="image" src="images/portrait.png" alt="Foreground Image">
+        </hero-section>
+
+        <div class="main-grid">
+            <section class="skills">
+                <h2>Personal Interests</h2>
+                <div class="skills-container">
+                    <picture>
+                        <img src="images/beach.jpg">
+                    </picture>
+
+                    <div class="skills-text">
+                        <p>Solving problems using <strong>machine learning</strong></p>
+                        <p>Typesafe programming with <strong>Scala</strong></p>
+                        <p>Setting up <strong>data pipelines</strong> that scale</p>
+                        <p>Anything that satisfies my <strong>curiosity</strong></p>
+                        <p><strong>Traveling</strong>, having a beer or two, and great music</p>
+                    </div>
+                </div>
+            </section>
+            <section class="recent-articles">
+                <h2>Recent articles</h2>
+                <p>
+                    <page-link href="jetML" page-name="jetML">Writing your own machine learning library:
+                        introducing JetML
+                    </page-link>
+                </p>
+                <p>
+                    <page-link href="vanillaWeb" page-name="vanillaJS"> How I made this site using
+                        vanilla JS: a crash course
+                    </page-link>
+                </p>
+                <p>
+                    <page-link href="scala3py4" page-name="scala3py4">Scala 3 is Python 4 ... or is
+                        it?
+                    </page-link>
+                </p>
+
+                <p><page-link href="dataEngineeringTrenches" page-name="dataEngineeringTrenches">Lessons
+                        learnt from the trenches: Data
+                        engineering
+                    </page-link>
+                </p>
+                <p>
+                    <page-link page-name="learningAI" href="learningAI">How you should learn AI in
+                        202X
+                    </page-link>
+                </p>
+            </section>
+            <section class="experience">
+                <h2>Select Projects</h2>
+                <div class="experience-container">
+                    <picture>
+                        <img src="images/side.jpg">
+                    </picture>
+
+                    <div class="experience-text">
+                        <p><strong>Modelling glucose</strong> levels for T1DM patients</p>
+                        <p><strong>AI photo booth</strong> at a large music festival</p>
+                        <p>Creating data science <strong>learning material</strong></p>
+                        <p><strong>Data analysis</strong> in manufacturing, sociology, finance and more</p>
+                    </div>
+                </div>
+            </section>
+            <section class="projects">
+                <h2>Projects</h2>
+                <div class="projects-container">
+                    <project-card>
+                        <img src="images/beach34.jpg" slot="image">
+                        <section slot="caption">
+                            <h3>Work in progress</h3>
+                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
+                            <button>Learn more.</button>
+                        </section>
+                    </project-card>
+                    <project-card>
+                        <img src="images/beach34.jpg" slot="image">
+                        <section slot="caption">
+                            <h3>Work in progress</h3>
+                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
+                            <button>Learn more.</button>
+                        </section>
+                    </project-card>
+                    <project-card>
+                        <img src="images/beach34.jpg" slot="image">
+                        <section slot="caption">
+                            <h3>Work in progress</h3>
+                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
+                            <button>Learn more.</button>
+                        </section>
+                    </project-card>
+                    <project-card>
+                        <img src="images/beach34.jpg" slot="image">
+                        <section slot="caption">
+                            <h3>Work in progress</h3>
+                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
+                            <button>Learn more.</button>
+                        </section>
+                    </project-card>
+                    <project-card>
+                        <img src="images/beach34.jpg" slot="image">
+                        <section slot="caption">
+                            <h3>Work in progress</h3>
+                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
+                            <button>Learn more.</button>
+                        </section>
+                    </project-card>
+                </div>
+            </section>
+        </div>
+    </main>
     <!--footer-->
 </body>
 
