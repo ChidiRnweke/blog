@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #4db8ac;
+    --accent-color: #0f62fe;
+    --background-color: #ffffff;
+    --background-alt: #f0f0f0;
+    --foreground-color: #333333;
+    --subtle-color: #606060;
+    --error-color: #dc3545;
+    --logo-bg: transparent;
+}
+
+.dark-theme {
+    --primary-color: #BB86FC;
+    --accent-color: #03DAC5;
+    --secondary-color: #C792EA;
+    --background-color: #1F1B24;
+    --background-alt: #2C2C2C;
+    --foreground-color: #ffffff;
+    --subtle-color: #b0b0b0;
+    --error-color: #ff6b6b;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    place-items: center;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding: 1rem 0;
+}
+
+strong {
+    color: var(--accent-color);
+}
+
+a,
+page-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+page-link:hover {
+    transform: scale(1.05);
+    color: var(--primary-color);
+    text-decoration: underline;
+
+}
+
+nav-bar page-link {
+    text-decoration: none;
+    color: var(--foreground-color);
+    transition: color 0.3s ease;
+    word-wrap: break-word;
+
+}
+
+pre,
+code {
+    background-color: var(--background-alt);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--subtle-color);
+}
+
+footer .contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 1rem 0.5rem 1rem;
+    gap: 1rem;
+}
+
+footer .contact img {
+    max-width: 25px;
+    height: auto;
+    display: block;
+}

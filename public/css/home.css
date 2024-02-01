@@ -1,12 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 body {
     margin-left: 1rem;
     margin-right: 1rem;
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--background-color);
-    color: var(--foreground-color);
 }
+
 
 hero-section {
     min-height: 200px;
@@ -23,28 +19,6 @@ hero-section img {
     box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.8);
 }
 
-:root {
-    --primary-color: #1a73e8;
-    --secondary-color: #4db8ac;
-    --accent-color: #0f62fe;
-    --background-color: #ffffff;
-    --background-alt: #f0f0f0;
-    --foreground-color: #333333;
-    --subtle-color: #606060;
-    --error-color: #dc3545;
-    --logo-bg: transparent;
-}
-
-.dark-theme {
-    --primary-color: #BB86FC;
-    --accent-color: #03DAC5;
-    --secondary-color: #C792EA;
-    --background-color: #1F1B24;
-    --background-alt: #2C2C2C;
-    --foreground-color: #ffffff;
-    --subtle-color: #b0b0b0;
-    --error-color: #ff6b6b;
-}
 
 header {
     display: flex;
@@ -56,59 +30,6 @@ header {
     padding: 1rem 0;
 }
 
-strong {
-    color: var(--accent-color);
-}
-
-page-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-
-
-page-link:hover {
-    transform: scale(1.05);
-    color: var(--primary-color);
-    text-decoration: underline;
-
-}
-
-hero-section section {
-    display: grid;
-    gap: 2rem;
-    position: absolute;
-    max-width: 10rem;
-    justify-content: right;
-    justify-self: right;
-    align-items: end;
-    color: white;
-    margin-right: 1rem;
-}
-
-hero-section section h1 {
-    justify-self: right;
-    text-shadow: 0.15rem 0.15rem 0.25rem rgba(0, 0, 0, 1);
-}
-
-hero-section section p {
-    justify-self: right;
-    text-shadow: 0.15rem 0.15rem 0.25rem rgba(0, 0, 0, 1);
-}
-
-.text-stuff {
-    text-align: right;
-}
-
-nav-bar page-link {
-    text-decoration: none;
-    color: var(--foreground-color);
-    transition: color 0.3s ease;
-    word-wrap: break-word;
-
-}
 
 .main-grid {
     display: grid;
@@ -315,9 +236,6 @@ project-card section button:active {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
 project-card section {
     display: flex;
     flex-direction: column;
@@ -335,25 +253,4 @@ project-card img {
     border-top-right-radius: 0.5rem;
     box-shadow: 0 -0.5rem 1rem -0.2rem rgba(0, 0, 0, 0.8);
 
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    color: var(--subtle-color);
-}
-
-footer .contact {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    margin: 1rem 0.5rem 1rem;
-    gap: 1rem;
-}
-
-footer .contact img {
-    max-width: 25px;
-    height: auto;
-    display: block;
 }
