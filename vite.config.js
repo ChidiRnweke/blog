@@ -1,6 +1,46 @@
 import { defineConfig } from 'vite';
 import fs from 'fs';
 import path from 'path';
+import markdownit from 'markdown-it';
+import { mkdir, writeFile } from 'fs/promises';
+import hljs from 'highlight.js'
+
+
+const md = markdownit({
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return hljs.highlight(str, { language: lang }).value;
+            } catch (__) { }
+        }
+
+        return '';
+    }
+});
+const markdownToHtmlPlugin = () => {
+    return {
+        name: 'markdown-to-html',
+        apply: 'build',
+        async buildStart() {
+            const sourceDir = path.resolve(__dirname, 'src/articles');
+            const destDir = path.resolve(__dirname, 'articles');
+            const template = fs.readFileSync(path.resolve(__dirname, 'src/templates/blogTemplate.html'), 'utf-8');
+
+            await mkdir(destDir, { recursive: true });
+            const files = fs.readdirSync(sourceDir).filter(file => file.endsWith('.md'));
+
+            for (const file of files) {
+                const src = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
+                const html = template.replace('<!--main-->', md.render(src));
+
+                const htmlFileName = file.replace(/\.md$/, '.html');
+                await writeFile(path.join(destDir, htmlFileName), html);
+            }
+        }
+    };
+};
+
+
 
 const htmlInjectPlugin = {
     name: 'html-inject',
@@ -19,7 +59,15 @@ const htmlInjectPlugin = {
 };
 
 export default defineConfig({
-    plugins: [{ ...htmlInjectPlugin, enforce: 'post' }],
+    build: {
+        rollupOptions: {
+            input: {
+                main: path.resolve(__dirname, 'index.html'),
+                page1: path.resolve(__dirname, 'articles/scala3py4.html'),
+            }
+        }
+    },
+    plugins: [markdownToHtmlPlugin(), { ...htmlInjectPlugin, enforce: 'post' }],
     base: "/blog/"
 });
 
