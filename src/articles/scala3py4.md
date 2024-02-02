@@ -8,11 +8,11 @@ On a nice day in late 2023 I was [doomscrolling](https://en.wikipedia.org/wiki/D
 
 Initially, I brushed it off as just another hot take. However, the thought lingered longer than I expected. Was there a grain of truth to this comparison?
 
-Since I want to have readers ~~of a diverse background~~ here's some context you need to be fully up to speed. Scala's leap from version 2 to 3 introduced a bunch of [new features](https://docs.scala-lang.org/scala3/new-in-scala3.html), most of which were met with enthusiasm—or at least a nod of approval—within the community. Yet, the introduction of an **optional** Python-style indentation syntax sparked the most debate.
+Since I want to have readers ~~of diverse backgrounds~~ here's some context you need to be fully up to speed. Scala's leap from version 2 to 3 introduced a bunch of [new features](https://docs.scala-lang.org/scala3/new-in-scala3.html), most of which were met with enthusiasm—or at least a nod of approval—within the community. Yet, the introduction of an **optional** Python-style indentation syntax sparked the most debate.
 
 We'll kick things off by examining a simple temperature conversion program written in both Python and Scala to get your feet wet. The scenario involves cities with temperatures in either Celsius or Fahrenheit, which we'll convert and display in both units.
 
-Here's how I would do it using Python:
+Here's how I would do it with Python:
 
 ```python
 from dataclasses import dataclass, replace
@@ -46,9 +46,7 @@ class Location:
 
 cities = [
     Location("New York", 60, False),  
-    Location("London", 15, True),     
-    Location("Tokyo", 25, True),      
-    Location("Sydney", 22, True),     
+    Location("London", 15, True),        
     Location("Helsinki", 5, True)      
 ]
 
@@ -90,9 +88,7 @@ object TemperatureConversion {
     val cities = List(
       Location("New York", 60, false),
       Location("London", 15, true),
-      Location("Tokyo", 25, true),
-      Location("Sydney", 22, true),
-      Location("Moscow", 5, true)
+      Location("Helsinki", 5, true)
     )
 	// shorthand for cities.map(city => city.toCelsius)
     val citiesCelsius = cities.map(_.toCelsius) 
@@ -133,9 +129,7 @@ case class Location(name: String, temperature: Double, celsius: Boolean):
   val cities = List(
     Location("New York", 60, false),
     Location("London", 15, true),
-    Location("Tokyo", 25, true),
-    Location("Sydney", 22, true),
-    Location("Moscow", 5, true)
+    Location("Helsinki", 5, true)
   )
 
   val citiesCelsius = cities.map(_.toCelsius)
@@ -160,7 +154,7 @@ To understand whether or not Python and Scala are similar we'd have to put them 
 
 >**Motorhead**: "The new BMW X7 is a beast! It's got 375 horsepower, a turbocharged 6-cylinder engine, and can go from 0 to 60 in just 5.8 seconds. Isn't it a beauty?"
 >
->**Average Person**: "(Looks at the photo) Eh, I'm not sold on the blue. My car's way cooler. Take a look.
+>**Average Person**: "(Looks at the photo) Eh, I'm not sold on the blue. My car's way cooler. Take a look."
 >
 >**Motorhead**: "That? Over the X7? But it's only got like 250 horsepower!"
 
@@ -292,7 +286,7 @@ The guiding principle is straightforward: the fewer the degrees of freedom, [the
 
 This may sound nebulous but let's look at the following two graphs:
 
-![[output.png]]
+![[degrees of freedom plot]](/images/scala3py4/dof_plot.jpg)
 
 The takeaway? While in many programs you cannot eliminate the need for testing for altogether, reducing the degrees of freedom allows for a leaner testing strategy. However, this reduction often comes at the cost of increased code complexity—a trade-off that can be annoying. For Scala this curve looks more favourable than for Python, as you reduce the degrees of freedom the complexity rises more gracefully than in Python's case.
 ### Value proposition 2: Compiling to frontend and native

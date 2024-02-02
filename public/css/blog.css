@@ -1,13 +1,41 @@
 pre {
     overflow-x: scroll;
-    font-size: 1rem;
     scrollbar-width: thin;
     overflow: auto;
-    font-size: 1rem;
+    font-size: 0.9rem;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 1rem;
-    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--subtle-color);
+}
+
+p code {
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+p>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+
+
+blockquote p,
+blockquote {
+    background-color: var(--background-alt);
+    padding: 0.5rem;
+    margin: 2rem;
+    border-radius: 5px;
+
+}
+
+blockquote {
+    background-color: var(--background-alt);
+    margin-bottom: 4rem;
+    display: block;
 }
 
 h1 {
