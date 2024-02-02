@@ -23,19 +23,17 @@ p>img {
 
 
 
-blockquote p,
 blockquote {
     background-color: var(--background-alt);
-    padding: 0.5rem;
     margin: 2rem;
     border-radius: 5px;
-
+    border: 1px solid var(--subtle-color);
 }
 
-blockquote {
-    background-color: var(--background-alt);
-    margin-bottom: 4rem;
-    display: block;
+
+
+blockquote p {
+    padding: 1.8rem;
 }
 
 h1 {
