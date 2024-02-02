@@ -1,0 +1,139 @@
+pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em
+}
+
+code.hljs {
+    padding: 3px 5px
+}
+
+:root {
+    --hljs1: #4a4a4a;
+    --hljs2: #d32f2f;
+    --hljs3: #1976d2;
+    --hljs4: #388e3c;
+    --hljs5: #0288d1;
+    --hljs6: #f57c00;
+    --hljs7: #616161;
+    --hljs8: #e91e63;
+    --hljs9: #7b1fa2;
+    --hljs10: #c2185b;
+    --hljs11: #689f38;
+    --hlj12: #d0f8ce;
+    --hljs13: #ff5252;
+    --hljs14: #ffccbc;
+    --hljsbg: #fefefe;
+}
+
+.dark-theme {
+    --hljs1: #c9d1d9;
+    --hljs2: #ff7b72;
+    --hljs3: #d2a8ff;
+    --hljs4: #79c0ff;
+    --hljs5: #a5d6ff;
+    --hljs6: #ffa657;
+    --hljs7: #8b949e;
+    --hljs8: #7ee787;
+    --hljs9: #1f6feb;
+    --hljs10: #f2cc60;
+    --hljs11: #aff5b4;
+    --hlj12: #033a16;
+    --hljs13: #ffdcd7;
+    --hljs14: #67060c;
+    --hljsbg: #0d1117;
+
+
+}
+
+.hljs {
+    color: var(--hljs1);
+    background: var(--hljsbg);
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+    color: var(--hljs2)
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+    color: var(--hljs3);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+    color: var(--hljs4);
+}
+
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+    color: var(--hljs5);
+}
+
+.hljs-built_in,
+.hljs-symbol {
+    color: var(--hljs6);
+}
+
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+    color: var(--hljs7);
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+    color: var(--hljs8);
+}
+
+.hljs-subst {
+    color: var(--hljs1);
+}
+
+.hljs-section {
+    color: var(--hljs9);
+    font-weight: 700
+}
+
+.hljs-bullet {
+    color: var(--hljs10);
+}
+
+.hljs-emphasis {
+    color: var(--hljs1);
+    font-style: italic
+}
+
+.hljs-strong {
+    color: var(--hljs1);
+    font-weight: 700
+}
+
+.hljs-addition {
+    color: var(--hljs11);
+    background-color: var(--hlj12);
+}
+
+.hljs-deletion {
+    color: var(--hljs13);
+    background-color: var(--hljs14);
+}
