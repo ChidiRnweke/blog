@@ -4,22 +4,7 @@ import path from 'path';
 import markdownit from 'markdown-it';
 import { mkdir, writeFile } from 'fs/promises';
 import hljs from 'highlight.js'
-import jsdom from 'jsdom';
-const { JSDOM } = jsdom;
-
-
-function replaceNode(dom, selector, content) {
-    const target = dom.window.document.querySelector(selector);
-
-    const fragment = dom.window.document.createDocumentFragment();
-    const tempContainer = dom.window.document.createElement('div');
-    tempContainer.innerHTML = content;
-    Array.from(tempContainer.childNodes).forEach(child => fragment.appendChild(child));
-
-    target.parentNode.insertBefore(fragment, target);
-    target.parentNode.removeChild(target);
-}
-
+import { JSDOM } from 'jsdom';
 
 
 const md = markdownit({
@@ -33,6 +18,12 @@ const md = markdownit({
         return '';
     }
 });
+
+const injectNode = (dom, selector, content) => {
+    const target = dom.window.document.querySelector(selector);
+    target.outerHTML = content;
+}
+
 const markdownToHtmlPlugin = () => {
     return {
         name: 'markdown-to-html',
@@ -48,13 +39,14 @@ const markdownToHtmlPlugin = () => {
             for (const file of files) {
                 const src = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
                 const html = new JSDOM(template)
-                replaceNode(html, "#main", md.render(src))
+                injectNode(html, "#main", md.render(src))
                 const htmlFileName = file.replace(/\.md$/, '.html');
                 await writeFile(path.join(destDir, htmlFileName), html.serialize());
             }
         }
     }
 }
+
 const markdownToHtmlPluginHMR = () => {
     return {
         name: 'markdown-to-html',
@@ -69,7 +61,7 @@ const markdownToHtmlPluginHMR = () => {
                     const fileName = path.basename(file);
                     const src = fs.readFileSync(file, 'utf-8');
                     const html = new JSDOM(template)
-                    replaceNode(html, "#main", md.render(src))
+                    injectNode(html, "#main", md.render(src))
 
                     const htmlFileName = fileName.replace(/\.md$/, '.html');
                     await writeFile(path.join(destDir, htmlFileName), html.serialize());
@@ -94,9 +86,9 @@ const htmlInjectPlugin = {
             const head = fs.readFileSync(path.resolve(__dirname, 'src/templates/head.html'), 'utf-8');
             const header = fs.readFileSync(path.resolve(__dirname, 'src/templates/header.html'), 'utf-8');
             const footer = fs.readFileSync(path.resolve(__dirname, 'src/templates/footer.html'), 'utf-8');
-            replaceNode(dom, "#head", head)
-            replaceNode(dom, "#header", header)
-            replaceNode(dom, "#footer", footer)
+            injectNode(dom, "#head", head)
+            injectNode(dom, "#header", header)
+            injectNode(dom, "#footer", footer)
             return dom.serialize()
         }
     }
