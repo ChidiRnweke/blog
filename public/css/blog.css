@@ -5,7 +5,9 @@ pre {
     overflow: auto;
     font-size: 1rem;
     box-sizing: border-box;
+    border-radius: 5px;
     padding: 1rem;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 

@@ -33,7 +33,7 @@ class NavBar extends HTMLElement {
 
     }
 
-    ::slotted(page-link.active) {
+    ::slotted(a.active) {
         font-weight: bold;
     }
 

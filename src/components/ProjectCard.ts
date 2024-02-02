@@ -1,5 +1,4 @@
-import { navigateTo } from "../router";
-import { getAttributeOrThrow, getElementOrThrow } from "../utils/dom";
+import { getElementOrThrow } from "../utils/dom";
 
 class ProjectCard extends HTMLElement {
 
@@ -11,7 +10,6 @@ class ProjectCard extends HTMLElement {
 
     public connectedCallback(): void {
         this.validate()
-        this.addEventListener('click', this.handleClick);
     }
 
     private validate(): void {
@@ -30,12 +28,6 @@ class ProjectCard extends HTMLElement {
         }
     }
 
-    private handleClick(): void {
-        const pageKey = getAttributeOrThrow(this, 'page-name')
-        const path = getAttributeOrThrow(this, "href");
-        navigateTo(pageKey, path);
-
-    }
 
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
