@@ -4,6 +4,22 @@ import path from 'path';
 import markdownit from 'markdown-it';
 import { mkdir, writeFile } from 'fs/promises';
 import hljs from 'highlight.js'
+import jsdom from 'jsdom';
+const { JSDOM } = jsdom;
+
+
+function replaceNode(dom, selector, content) {
+    const target = dom.window.document.querySelector(selector);
+
+    const fragment = dom.window.document.createDocumentFragment();
+    const tempContainer = dom.window.document.createElement('div');
+    tempContainer.innerHTML = content;
+    Array.from(tempContainer.childNodes).forEach(child => fragment.appendChild(child));
+
+    target.parentNode.insertBefore(fragment, target);
+    target.parentNode.removeChild(target);
+}
+
 
 
 const md = markdownit({
@@ -31,10 +47,10 @@ const markdownToHtmlPlugin = () => {
 
             for (const file of files) {
                 const src = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
-                const html = template.replace('<!--main-->', md.render(src));
-
+                const html = new JSDOM(template)
+                replaceNode(html, "#main", md.render(src))
                 const htmlFileName = file.replace(/\.md$/, '.html');
-                await writeFile(path.join(destDir, htmlFileName), html);
+                await writeFile(path.join(destDir, htmlFileName), html.serialize());
             }
         }
     }
@@ -52,10 +68,11 @@ const markdownToHtmlPluginHMR = () => {
                 if (file.startsWith(sourceDir)) {
                     const fileName = path.basename(file);
                     const src = fs.readFileSync(file, 'utf-8');
-                    const html = template.replace('<!--main-->', md.render(src));
+                    const html = new JSDOM(template)
+                    replaceNode(html, "#main", md.render(src))
 
                     const htmlFileName = fileName.replace(/\.md$/, '.html');
-                    await writeFile(path.join(destDir, htmlFileName), html);
+                    await writeFile(path.join(destDir, htmlFileName), html.serialize());
 
                     server.ws.send({
                         type: 'custom',
@@ -73,13 +90,14 @@ const htmlInjectPlugin = {
     transformIndexHtml: {
         order: 'pre',
         handler(html) {
+            const dom = new JSDOM(html);
             const head = fs.readFileSync(path.resolve(__dirname, 'src/templates/head.html'), 'utf-8');
             const header = fs.readFileSync(path.resolve(__dirname, 'src/templates/header.html'), 'utf-8');
             const footer = fs.readFileSync(path.resolve(__dirname, 'src/templates/footer.html'), 'utf-8');
-            return html
-                .replace('<!--head-->', head)
-                .replace('<!--header-->', header)
-                .replace('<!--footer-->', footer);
+            replaceNode(dom, "#head", head)
+            replaceNode(dom, "#header", header)
+            replaceNode(dom, "#footer", footer)
+            return dom.serialize()
         }
     }
 };
