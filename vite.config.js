@@ -63,7 +63,14 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: path.resolve(__dirname, 'index.html'),
-                page1: path.resolve(__dirname, 'articles/scala3py4.html'),
+                recentArticles: path.resolve(__dirname, 'articles.html'),
+                games: path.resolve(__dirname, 'games.html'),
+                scala3py4: path.resolve(__dirname, 'articles/scala3py4.html'),
+                vanillaWeb: path.resolve(__dirname, 'articles/vanillaWeb.html'),
+                howYouShouldLearnAI: path.resolve(__dirname, 'articles/learningAI.html'),
+                jetML: path.resolve(__dirname, 'articles/jetML.html'),
+                dataEngineeringTrenches: path.resolve(__dirname, 'articles/dataEngineeringTrenches.html'),
+
             }
         }
     },
