@@ -12,7 +12,7 @@ Since I want to have readers ~~of a diverse background~~ here's some context you
 
 We'll kick things off by examining a simple temperature conversion program written in both Python and Scala to get your feet wet. The scenario involves cities with temperatures in either Celsius or Fahrenheit, which we'll convert and display in both units.
 
-Here's my on it using Python:
+Here's how I would do it using Python:
 
 ```python
 from dataclasses import dataclass, replace
