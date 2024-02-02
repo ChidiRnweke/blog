@@ -20,7 +20,7 @@ const md = markdownit({
 const markdownToHtmlPlugin = () => {
     return {
         name: 'markdown-to-html',
-        apply: 'build',
+        apply: 'serve',
         async buildStart() {
             const sourceDir = path.resolve(__dirname, 'src/articles');
             const destDir = path.resolve(__dirname, 'articles');
@@ -36,11 +36,33 @@ const markdownToHtmlPlugin = () => {
                 const htmlFileName = file.replace(/\.md$/, '.html');
                 await writeFile(path.join(destDir, htmlFileName), html);
             }
+        },
+        async handleHotUpdate({ file, server }) {
+            if (file.endsWith('.md')) {
+                const sourceDir = path.resolve(__dirname, 'src/articles');
+                const destDir = path.resolve(__dirname, 'articles');
+                const template = fs.readFileSync(path.resolve(__dirname, 'src/templates/blogTemplate.html'), 'utf-8');
+
+                if (file.startsWith(sourceDir)) {
+                    const fileName = path.basename(file);
+                    const src = fs.readFileSync(file, 'utf-8');
+                    const html = template.replace('<!--main-->', md.render(src));
+
+                    const htmlFileName = fileName.replace(/\.md$/, '.html');
+                    await writeFile(path.join(destDir, htmlFileName), html);
+
+                    server.ws.send({
+                        type: 'custom',
+                        event: 'file-change',
+                        data: { path: `/articles/${htmlFileName}` },
+                    });
+                }
+                return [];
+            }
         }
     };
-};
 
-
+}
 
 const htmlInjectPlugin = {
     name: 'html-inject',
@@ -70,7 +92,6 @@ export default defineConfig({
                 howYouShouldLearnAI: path.resolve(__dirname, 'articles/learningAI.html'),
                 jetML: path.resolve(__dirname, 'articles/jetML.html'),
                 dataEngineeringTrenches: path.resolve(__dirname, 'articles/dataEngineeringTrenches.html'),
-
             }
         }
     },
