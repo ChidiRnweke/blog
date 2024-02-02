@@ -20,7 +20,7 @@ const md = markdownit({
 const markdownToHtmlPlugin = () => {
     return {
         name: 'markdown-to-html',
-        apply: 'serve',
+        apply: 'build',
         async buildStart() {
             const sourceDir = path.resolve(__dirname, 'src/articles');
             const destDir = path.resolve(__dirname, 'articles');
@@ -36,7 +36,13 @@ const markdownToHtmlPlugin = () => {
                 const htmlFileName = file.replace(/\.md$/, '.html');
                 await writeFile(path.join(destDir, htmlFileName), html);
             }
-        },
+        }
+    }
+}
+const markdownToHtmlPluginHMR = () => {
+    return {
+        name: 'markdown-to-html',
+        apply: 'serve',
         async handleHotUpdate({ file, server }) {
             if (file.endsWith('.md')) {
                 const sourceDir = path.resolve(__dirname, 'src/articles');
@@ -60,10 +66,8 @@ const markdownToHtmlPlugin = () => {
                 return [];
             }
         }
-    };
-
+    }
 }
-
 const htmlInjectPlugin = {
     name: 'html-inject',
     transformIndexHtml: {
@@ -95,7 +99,7 @@ export default defineConfig({
             }
         }
     },
-    plugins: [markdownToHtmlPlugin(), { ...htmlInjectPlugin, enforce: 'post' }],
+    plugins: [markdownToHtmlPlugin(), markdownToHtmlPluginHMR(), { ...htmlInjectPlugin, enforce: 'post' }],
     base: "/blog/"
 });
 
