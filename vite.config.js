@@ -96,6 +96,9 @@ const htmlInjectPlugin = {
 };
 
 export default defineConfig({
+    test: {
+        environment: 'happy-dom',
+    },
     build: {
         rollupOptions: {
             input: {
