@@ -1,7 +1,7 @@
 # Scala 3 is Python 4 ... or is it? Part 1.
 ## Setting the stage
 
-On a nice day in late 2023 I was [doomscrolling](https://en.wikipedia.org/wiki/Doomscrolling) on Reddit when I saw an enticing [opinion](https://www.reddit.com/r/scala/comments/14cfh1n/comment/jokrski/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) .
+On a nice day in late 2023 I was [doomscrolling](https://en.wikipedia.org/wiki/Doomscrolling) on Reddit when I saw an enticing [opinion](https://www.reddit.com/r/scala/comments/14cfh1n/comment/jokrski/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).
 
 > The move to Scala 3 syntax should have been coupled with a marketing push to Python3 developers.
    **Scala 3 is python 4 in a lot of ways.**
@@ -142,7 +142,7 @@ case class Location(name: String, temperature: Double, celsius: Boolean):
   
 ```
 
-The resemblance between Scala 3 and Python examples is uncanny, so much so that friends have occasionally mistaken one for the other in my snippets. While I'm a fan of Scala 3's indentation-based syntax for its cleanliness [Reddit disagrees](https://www.reddit.com/r/scala/comments/142ecvf/comment/jn4khr6/?utm_source=share&utm_medium=web2x&context=3). Transitioning a language's style can indeed be scary, and Scala 3's support for both indentation and brace styles does open the floor to much debate, or [bike-shedding](https://en.wikipedia.org/wiki/Law_of_triviality).
+The resemblance between Scala 3 and Python examples is uncanny. So much so that friends have occasionally mistaken one for the other in my snippets. While I'm a fan of Scala 3's indentation-based syntax for its cleanliness [Reddit disagrees](https://www.reddit.com/r/scala/comments/142ecvf/comment/jn4khr6/?utm_source=share&utm_medium=web2x&context=3). Transitioning a language's style can indeed be scary, and Scala 3's support for both indentation and brace styles does open the floor to much debate, or [bike-shedding](https://en.wikipedia.org/wiki/Law_of_triviality).
 
 With that, let's circle back to our main question: Can Scala 3 genuinely be seen as "Python 4"? To get there, we must first answer two questions:
 
@@ -168,15 +168,13 @@ While I admire the rigour I'll take a more hands-on approach by making three pro
 2. **A Link Shortener:** A practical utility that’s a step up in complexity.
 3. A small, but more involved project that benefits from **concurrency**.
 
-After each round, I'll share my unfiltered thoughts on how it all went. I've got a soft spot for both Python and Scala, so expect a fair play-by-play. This will help us answer our first question.
+After each round, I'll share my unfiltered thoughts on how it all went. I've got a soft spot for both Python and Scala, so expect a fair play-by-play. This will help us answer our first question. Before we do so let's look at what is one of Python's biggest pain points in my opinion.
 
-## Scala's value proposition
+## Python's journey into static typing
 
-### Python's journey into static typing
+Every programming language carves out its niche, its very reason for being. For Ruby, it was about maximizing developer happiness. In Python's case it was initially its simplicity, and [runtime typing](https://www.artima.com/articles/strong-versus-weak-typing) is an embodiment of this. At compile-time ([yes, Python has a small compilation step](https://devguide.python.org/internals/compiler/#compiler)) there is no type information however at runtime there is. The upside of this is that when an error occurs at runtime you have a lot of information to help you understand what went wrong. That's one of the reasons why Python's error messages are so good, if you care to read them that is.
 
-Every programming language carves out its niche, its very reason for being. For Ruby, it was about maximizing developer happiness. In Python's case it was initially its simplicity and [Runtime typing](https://www.artima.com/articles/strong-versus-weak-typing) is an embodiment of this. At compile-time ([yes, Python has a small compilation step](https://devguide.python.org/internals/compiler/#compiler)) there is no type information when your program is running there is. The upside of this is that when an error occurs at runtime you have a lot of information to help you understand what went wrong. 
-
-However, Python has gradually tiptoed into the realm of static typing. Enter tools like [Mypy](https://peps.python.org/pep-0484/) and [Pyright](https://github.com/microsoft/pyright), which allow for optional type hints. For simplicity's sake, let's lump these together under "mypy". These type checkers can help you while refactoring, add a parameter to a function and your type checker / linter will complain. I'm a big believer that types aren't purely mechanical representations of data but also should carry semantic meaning. An additional upside of adding types to your program makes it more readable by conveying intent. 
+Python has gradually tiptoed into the realm of static typing. Enter tools like [Mypy](https://peps.python.org/pep-0484/) and [Pyright](https://github.com/microsoft/pyright), which allow for optional type hints. For simplicity's sake, let's lump these together under "mypy". These type checkers can help you while refactoring. For instance, add a parameter to a function and your type checker or linter will complain. An additional upside of adding types to your program makes it more readable by conveying intent. 
 
 Consider these examples:
 
@@ -212,16 +210,28 @@ def suggest_meal(menu: Menu, restrictions: list[DietaryRestriction]) -> float:
 
 Which flavour do you lean towards—\#Typed or \#Untyped? 
 
-My vote goes to \#Typed, hands down. It locks down the code with **fewer degrees of freedom**, essentially guiding its use down a singular path. The middle ground, while more constrained than the Wild West of untyped code, still leaves too much to interpretation. For instance, We know how many dietary restrictions there are so we can encode that information into our program. Doing so gives an indication that there are at least 3 specific cases to handle.
+My vote goes to \#Typed, hands down. It locks down the code with **fewer degrees of freedom**, essentially guiding its use down a singular path. The middle ground, while more constrained than the Wild West of untyped code, still leaves a bit too much to interpretation. For instance, we know how many dietary restrictions there are so we could have encoded that information into our program. Doing so gives an indication that there are at least 3 specific cases to handle.
 
 Before static typing's ascent, the first line of defence was descriptive naming (`menu_dict`, `dietary_restrictions_list`), followed by a rigorous regime of testing. Testing, while essential, is a double-edged sword—it secures your code but at the [cost of time and future maintenance overhead](https://www.manning.com/books/unit-testing). The appeal of tools like mypy lies in their ability to lower the degrees of freedom, reducing both the need for tests and the potential for runtime surprises.
 
-Speaking from experience, this is easier said than done. Writing tests isn't free since they cost time. Testing is a necessity for longer lived programs, but each test not written is a win because it ultimately means you have less code to maintain. One way to achieve this is by reducing the degrees of freedom of your programs. Afterwards tooling that finds incorrect programs "for free", in my opinion this is one of the main advantages of mypy but and [type systems in general](https://ovid.github.io/articles/what-to-know-before-debating-type-systems.html).
+Speaking from experience, this is easier said than done. Writing tests isn't free since they cost time. Testing is a necessity for longer lived programs, but each test not written is a win because it ultimately means you have less code to maintain. One way to achieve this is by reducing the degrees of freedom of your programs, afterwards tooling that finds incorrect programs "for free", in my opinion this is one of the main advantages of mypy but and [type systems in general](https://ovid.github.io/articles/what-to-know-before-debating-type-systems.html).
 
 Yet, mypy isn't without its pitfalls. Experience tells me it's only as robust as your code's weakest link. Using loosely typed interfaces means resorting to workarounds like `cast` or `# type: ignore`, which can sidestep linting errors but at the risk of runtime exceptions. Moreover, the shift towards gradual typing can inadvertently increase your code's complexity. I prefer \#Typed, but I also understand the opposite perspective, we've gone from a single function to a `dataclass`, `Literal`, a type alias and so on. 
 
-Let's have a look at what Scala gives us...
-### Value proposition 1: Domain modelling
+The key takeaways here are that:
+
+1. **Every programming language carves out its own space**, and for Python, its hallmark has been simplicity.
+2. **A shift towards static typing has emerged**, offering the promise of more predictable codebases and reducing the reliance on extensive testing.
+3. **Mypy's effectiveness is contingent on your codebase's weakest link**, that's one of the limitations inherent in tools designed to retrofit type safety.
+
+Now, let's pivot to Scala and explore what it brings to the table...
+
+## Scala's value proposition
+
+Diving into Scala's offerings, we find three compelling advantages. Kicking things off is **Turning Complex Ideas into Simple Code**, addressing a fundamental challenge often encountered in Python development. Following this, we'll look at an interesting theory I've been mulling over. Our second standout feature, **Code Once, Run Anywhere (\* 3): Compiling to JVM, Native, and JavaScript**, might not be Scala's official slogan, but it's a suggestion the folks at Scala-center might find intriguing! Last but by no means least, we encounter **Resume Driven Development: (The Buzzwords)**. Despite the seemingly cynical name, this point is made with a dose of affection, acknowledging Scala's role in powering a range of innovative tools for tackling diverse challenges. Without further delay, let's examine our first value proposition in detail.
+
+
+### Value proposition 1: Turning Complex Ideas into Simple Code
 
 ```scala
 case class MenuItem(name: String, price: Float)
@@ -236,7 +246,7 @@ def suggestMeal(menu: Menu, restrictions: List[DietaryRestriction]): Float =
 
 The example above resembles Python once again syntax-wise. As this style of programming, roughly [domain modelling](https://docs.scala-lang.org/scala3/book/taste-modeling.html), is a first-class citizen in Scala it has a number of language features to facilitate it. Aside from the aforementioned `case class` and `enum` the language also has support for constants and immutable data structures. All of these have the intended effect of reducing the degrees of freedom of a program.
 
-Now, let's tackle a common sense rule: menu prices shouldn't be negative otherwise you'd be getting paid to eat. Scala introduces `opaque type` to deal with such real-world constraints elegantly:
+Now, let's tackle a common sense rule, menu prices shouldn't be negative otherwise you'd be getting paid to eat. Scala introduces `opaque type` to deal with such real-world constraints elegantly:
 
 
 ```scala
@@ -276,9 +286,7 @@ val item = MenuItem(name, positivePrice)
 In this toy example we set all negative input to zero. You can imagine in more complex applications this could be changed to retry logic. [The full script is here](https://gist.github.com/ChidiRnweke/796c063162542e61e654d5e471d1c9a8).
 
 While Python offers [NewType](https://docs.python.org/3/library/typing.html#newtype) for a somewhat similar purpose. The difference is that the Python `NewType` is automatically a subtype of the type it's based on. This is something we don't want, subtyping means we need to remember what [Liskov Substitution Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle) is again...  
-### The Degrees of freedom hypothesis
-
-_Disclaimer: The thoughts shared in this section are not widely recognized theories but rather a personal conjecture._
+#### The Degrees of freedom hypothesis
 
 To reiterate, the concept of degrees of freedom here refers to the ways one can interact with code—both correctly and incorrectly. A type system is one of the tools at our disposal to reduce these degrees of freedom. 
 
@@ -290,7 +298,7 @@ This may sound nebulous but let's look at the following two graphs:
 
 ![[degrees of freedom plot]](/images/scala3py4/dof_plot.jpg)
 
-The takeaway? While in many programs you cannot eliminate the need for testing for altogether, reducing the degrees of freedom allows for a leaner testing strategy. However, this reduction often comes at the cost of increased code complexity—a trade-off that can be annoying. For Scala this curve looks more favorable than for Python, as you reduce the degrees of freedom the complexity rises more gracefully than in Python's case.
+The takeaway? While in many programs you cannot eliminate the need for testing for altogether, reducing the degrees of freedom allows for a leaner testing strategy. However, this reduction often comes at the cost of increased code complexity—a trade-off that can be annoying. For Scala this curve looks more favorable than for Python: as you reduce the degrees of freedom the complexity rises more gracefully than in Python's case.
 ### Value proposition 2: Compiling to JavaScript and native
 
 
@@ -301,7 +309,7 @@ When you've put your heart and soul into creating a Python project, you naturall
 
 There are projects such as Pyinstaller that promise to bundle Python and all its dependencies into a single executable. I haven't used it but everyone I know that has relays the same frustrating experience. Containerization offers a more robust solution, but it assumes a certain level of technical proficiency from your users, which might not always be the case. The alternative? Turning your project into a web application, which, while more universally accessible, introduces its own set of complexities and limitations.
 
-This is where the proposition of using other programming languages, such as Scala, becomes intriguing. Aside from targeting the Java virtual machine (JVM) Scala is capable of compiling to both a standalone executable as well as JavaScript. This means that the language is truly cross-platform. ([Write once, run everywhere](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) * 3) seems to be what they're going for.
+This is where the allure of using other programming languages, such as Scala, comes from. Aside from targeting the Java virtual machine (JVM) Scala is capable of compiling to both a standalone executable as well as JavaScript. This means that the language is truly cross-platform. ([Write once, run everywhere](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) * 3) seems to be what they're going for.
 
 However, as with any technology that seems too promising, there are caveats. For instance, Scala Native, at the time of writing, is limited to single-threaded execution, though this is expected to change in the upcoming 0.5 version. Considering it has not reached a 1.0 release, Scala Native's evolving nature means the platform is rapidly advancing but that may present stability concerns.
 
@@ -323,15 +331,23 @@ As someone that does a fair share of data engineering image such as the one abov
 
 Scala has carved out a niche for itself in the space of advanced libraries and frameworks that are nothing short of impressive. Heavyweights like Apache Spark and Apache Hive have long been staples in the big data sphere. Meanwhile, Akka actors and especially Apache Kafka have become synonymous with distributed computing. On top of that it's a haven for cutting-edge functional programming housing ecosystems such as [Typelevel](https://typelevel.org/) and [ZIO](https://zio.dev/).
 
-But here's the thing—while Scala's knack for handling complex systems is a big sell, it's also put it in a box. Precisely because it's great at building complex systems that is the only context it's spoken about. This gives the impression that that is the only thing the language is or should be used for. This is a fantastic blog post and ecosystem that addresses this issue [in more detail](https://www.lihaoyi.com/post/comlihaoyiScalaExecutablePseudocodethatsEasyBoringandFast.html#boring).  
+But here's the thing—while Scala's knack for handling complex systems is a big sell, it's also put it in a box. **Precisely because it's great at building complex systems that is the only context it's spoken about.** This gives the impression that that is the only thing the language is or should be used for. This is a fantastic blog post and ecosystem that addresses this issue [in more detail](https://www.lihaoyi.com/post/comlihaoyiScalaExecutablePseudocodethatsEasyBoringandFast.html#boring).  
 
 Switching gears to Python, we find a stark contrast. Python's big selling point is its simplicity. So, putting Scala 3 in the shoes of "Python 4"? It doesn't quite fit. They're playing in different leagues, not because of what they can or can't do, but because of the communities they're in and the ecosystems they created. My day job is in machine learning, that simply means that Python is my go-to tool there. The sheer amount of libraries, textbooks and tutorials it has in this space means it more or less wins this by default. At the end of the day, the ecosystems and communities that grow around a language really shape what it's all about. 
 
-While Scala is, potentially, a much harder language I don't believe the skill floor is all that different. It's perfectly possible to use Scala for every day tasks without using these advanced libraries, at least in theory. In practice what I've noticed is that the functional programming community is more active online and they also seem to have more maintained libraries. I don't know how I feel about this—on the one hand I enjoy functional programming but on the other hand, it has a steeper learning curve which means it's less accessible. To get started you typically need to rethink how you write code and learn a lot of new terminology. 
+While Scala is potentially a much harder language I don't believe the skill floor is all that different. It's perfectly possible to use Scala for every day tasks without advanced features or libraries. In practice what I've noticed is that the functional programming community is more active online and they also seem to have more maintained libraries. I don't know how I feel about this—on the one hand I enjoy functional programming but on the other hand, it has a steeper learning curve which means it's less accessible. The perception it's a language for cutting-edge functional programming and heavy duty projects may turn away newcomers.
 
-To that end I'll write two versions of the Scala programs for the next part: one that adopts a simplicity-first mindset and another that uses some of the libraries mentioned above. 
+To that end **I'll write two versions of the Scala programs for the next part**: one that adopts a simplicity-first mindset and another that uses some of the libraries mentioned above. 
 
-Oh boy, wrapping this up, I realize I've tasked myself with a substantial amount of work. Let's head over to the recap.
+### The value propositions, summarized
+
+Wow, that was a lot of information. For the lucky few who've made it this far, let's briefly summarize the value propositions before wrapping up:
+
+
+1. **Turning Complex Ideas into Simple Code**: Scala simplifies complex domain modeling into manageable code, with low degrees of freedom.
+2. **Code Once, Run Anywhere (\* 3)**: Scala's versatility allows code to seamlessly target JVM, native, and web platforms.
+3. **Resume Driven Development**: For better and for worse, Scala is equipped for crafting complex systems, showcasing its strength in tackling sophisticated challenges.
+
 ## Recap
 
 Alright, let's circle back to our starting point: the big question of whether Scala 3 could be seen as Python 4. To get everyone introduces to Scala we put both languages to the test with a simple program to see just how they stack up on a basic level.
@@ -343,3 +359,5 @@ We're eyeing to tackle projects in Python and in two flavours of Scala—keeping
 Let me know your thoughts by opening an issue on the repository, a comment section is in the works!
 
 \- Chidi
+
+*... But not without a lot of help from Singiamtel, Edd, Senjan, Bryant, and others! Appreciate you ✌️.*
