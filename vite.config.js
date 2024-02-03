@@ -8,6 +8,7 @@ import { JSDOM } from 'jsdom';
 
 
 const md = markdownit({
+    html: true,
     highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
