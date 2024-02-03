@@ -327,7 +327,7 @@ You can download the binaries for windows, macOS and Linux as well.
 
 ![[degrees of freedom plot]](/images/scala3py4/nest-kafka.jpg)
 
-As someone that does a fair share of data engineering image such as the one above are our bread and butter. It's taken from a databricks blog series called [Scalable data](https://www.databricks.com/blog/2017/04/26/processing-data-in-apache-kafka-with-structured-streaming-in-apache-spark-2-2.html). People take fancy tools to construct a #RealTime, #Streaming #architecture. Not because they have to, but because they can but I digress. 
+As someone that does a fair share of data engineering images such as the one above are my bread and butter. It's taken from a databricks blog series called [Scalable data](https://www.databricks.com/blog/2017/04/26/processing-data-in-apache-kafka-with-structured-streaming-in-apache-spark-2-2.html). People take fancy tools to construct a #RealTime, #Streaming #architecture. Not because they have to, but because they can but I digress. 
 
 Scala has carved out a niche for itself in the space of advanced libraries and frameworks that are nothing short of impressive. Heavyweights like Apache Spark and Apache Hive have long been staples in the big data sphere. Meanwhile, Akka actors and especially Apache Kafka have become synonymous with distributed computing. On top of that it's a haven for cutting-edge functional programming housing ecosystems such as [Typelevel](https://typelevel.org/) and [ZIO](https://zio.dev/).
 
