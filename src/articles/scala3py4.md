@@ -238,6 +238,7 @@ The example above resembles Python once again syntax-wise. As this style of prog
 
 Now, let's tackle a common sense rule: menu prices shouldn't be negative otherwise you'd be getting paid to eat. Scala introduces `opaque type` to deal with such real-world constraints elegantly:
 
+
 ```scala
 opaque type PositiveFloat = Float
 
@@ -248,7 +249,7 @@ def suggestMeal(menu: Menu, restrictions: List[DietaryRestrictions]): PositiveFl
 	...
 ```
 
-To work with this `PositiveFloat`, we need a bit of setup:
+To work with this `PositiveFloat`, we need a bit of setup. Inside this object `Float` is the same as `PositiveFloat`:
 
 ```scala
 object PositiveFloat:
@@ -260,11 +261,11 @@ object PositiveFloat:
 
 This code smartly ensures that only positive prices make it through, returning `Some(Float)` for valid inputs and `None` for anything that doesn't make the cut. 
 
-Putting it all together:
+To the outside world `Float` and `PositiveFloat` are unrelated, you need to make one first and handle the case when creating a `PositiveFloat` fails.
 
 ```scala
 import scala.io.StdIn.readLine
-val name = readLine("Give me a name for your menu item:")
+val name = readLine("Give me a name for your menu item: ")
 val price = readLine("Give me a price for your menu item: ").toFloat
 
 // getOrElse zero on the failing path otherwise the real value is returned
