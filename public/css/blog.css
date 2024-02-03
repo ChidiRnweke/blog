@@ -5,7 +5,7 @@ pre {
     font-size: 0.9rem;
     box-sizing: border-box;
     border-radius: 5px;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid var(--subtle-color);
 }
 
@@ -23,9 +23,11 @@ p>img {
 
 
 
-blockquote {
+blockquote,
+pre {
     background-color: var(--background-alt);
-    margin: 2rem;
+    margin-top: 2.3rem;
+    margin-bottom: 2.3rem;
     border-radius: 5px;
     border: 1px solid var(--subtle-color);
 }
