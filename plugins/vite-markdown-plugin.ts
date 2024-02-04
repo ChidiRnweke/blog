@@ -44,7 +44,7 @@ async function processMarkdownFiles(sourceDir, destDir, template) {
             const refJSON = JSON.parse(fs.readFileSync(refPath, 'utf-8'));
             endNoteTransformer(blogDOM.window.document, refJSON.map(entry => entry.title));
         }
-        const finalHtml = injectContentIntoTemplate(template, "main", blogDOM.serialize());
+        const finalHtml = injectContentIntoTemplate(template, "main", blogDOM.window.document.body.innerHTML);
         const htmlFileName = file.replace(/\.md$/, '.html');
         await writeFile(path.join(destDir, htmlFileName), finalHtml);
     }));
