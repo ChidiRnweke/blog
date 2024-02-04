@@ -20,9 +20,11 @@
   },
   "dependencies": {
     "@types/jsdom": "^21.1.6",
+    "@types/markdown-it": "^13.0.7",
     "highlight.js": "^11.9.0",
     "jsdom": "^24.0.0",
     "markdown-it": "^14.0.0",
+    "markdown-it-anchor": "^8.6.7",
     "node-fetch": "^3.3.2"
   }
 }
