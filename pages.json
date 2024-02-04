@@ -1,0 +1,10 @@
+{
+    "main": "./index.html",
+    "recentArticles": "./articles.html",
+    "games": "./games.html",
+    "scala3py4": "./articles/scala3py4.html",
+    "vanillaWeb": "./articles/vanillaWeb.html",
+    "howYouShouldLearnAI": "./articles/learningAI.html",
+    "jetML": "./articles/jetML.html",
+    "dataEngineeringTrenches": "./articles/dataEngineeringTrenches.html"
+}
