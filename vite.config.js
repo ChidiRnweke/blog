@@ -5,6 +5,7 @@ import markdownit from 'markdown-it';
 import { mkdir, writeFile } from 'fs/promises';
 import hljs from 'highlight.js'
 import { JSDOM } from 'jsdom';
+import { endNoteParser as endNoteTransformer } from './plugins/endNoteParser';
 
 
 const md = markdownit({
@@ -25,6 +26,11 @@ const injectNode = (dom, selector, content) => {
     target.outerHTML = content;
 }
 
+const injectContentIntoTemplate = (template, placeholderId, content) => {
+    const placeholder = `<template id="${placeholderId}"></template>`;
+    return template.replace(placeholder, content);
+};
+
 const markdownToHtmlPlugin = () => {
     return {
         name: 'markdown-to-html',
@@ -37,15 +43,24 @@ const markdownToHtmlPlugin = () => {
             await mkdir(destDir, { recursive: true });
             const files = fs.readdirSync(sourceDir).filter(file => file.endsWith('.md'));
 
-            for (const file of files) {
-                const src = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
-                const html = new JSDOM(template)
-                injectNode(html, "#main", md.render(src))
+            await Promise.all(files.map(async (file) => {
+                const markdown = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
+                const refPath = path.join(sourceDir, "references", file.replace(/\.md$/, '.json'))
+                const blogHTML = md.render(markdown);
+                const blogDOM = new JSDOM(blogHTML);
+
+                if (fs.existsSync(refPath)) {
+                    const refJSON = JSON.parse(fs.readFileSync(refPath, 'utf-8'));
+                    const ref = refJSON.map((entry) => entry.title);
+                    endNoteTransformer(blogDOM.window.document, ref);
+                }
+
+                const finalHtml = injectContentIntoTemplate(template, "main", blogDOM.serialize());
                 const htmlFileName = file.replace(/\.md$/, '.html');
-                await writeFile(path.join(destDir, htmlFileName), html.serialize());
-            }
+                await writeFile(path.join(destDir, htmlFileName), finalHtml);
+            }));
         }
-    }
+    };
 }
 
 const markdownToHtmlPluginHMR = () => {
@@ -60,12 +75,22 @@ const markdownToHtmlPluginHMR = () => {
 
                 if (file.startsWith(sourceDir)) {
                     const fileName = path.basename(file);
-                    const src = fs.readFileSync(file, 'utf-8');
-                    const html = new JSDOM(template)
-                    injectNode(html, "#main", md.render(src))
+                    const refPath = path.join(sourceDir, "references", fileName.replace(/\.md$/, '.json'))
+
+                    const markdown = fs.readFileSync(file, 'utf-8');
+                    const blogHTML = md.render(markdown)
+                    const blogDOM = new JSDOM(blogHTML);
+
+                    if (fs.existsSync(refPath)) {
+                        const refJSON = JSON.parse(fs.readFileSync(refPath, 'utf-8'));
+                        const ref = refJSON.map((entry) => entry.title);
+                        endNoteTransformer(blogDOM.window.document, ref);
+                    }
+
+                    const finalHtml = injectContentIntoTemplate(template, "main", blogHTML);
 
                     const htmlFileName = fileName.replace(/\.md$/, '.html');
-                    await writeFile(path.join(destDir, htmlFileName), html.serialize());
+                    await writeFile(path.join(destDir, htmlFileName), finalHtml);
 
                     server.ws.send({
                         type: 'custom',
