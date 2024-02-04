@@ -12,10 +12,8 @@ export const endNoteParser = (text: Document, titles: string[]): Document => {
         links[index].replaceWith(endNote);
         referenceList.appendChild(title);
     });
-
-    text.body.appendChild(divider);
-    text.body.appendChild(referenceTitle);
-    text.body.appendChild(referenceList);
+    const references = createReferenceSection(text, divider, referenceTitle, referenceList);
+    text.body.appendChild(references);
     return text;
 }
 
@@ -46,3 +44,15 @@ const createEndNote = (anchor: HTMLAnchorElement, position: number, pageTitle: s
 
     return [endNote, title]
 }
+function createReferenceSection(text: Document, divider: HTMLHRElement, referenceTitle: HTMLHeadingElement, referenceList: HTMLOListElement) {
+    const refListComponent = text.createElement('collapsable-reference-list');
+    const references = text.createElement('section');
+    references.id = 'references';
+    references.slot = "reference-section"
+    references.appendChild(divider);
+    references.appendChild(referenceTitle);
+    references.appendChild(referenceList);
+    refListComponent.appendChild(references)
+    return refListComponent;
+}
+

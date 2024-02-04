@@ -14,12 +14,16 @@ p code {
     font-size: 1rem;
 }
 
+#references ol {
+    font-size: small;
+}
+
 li a {
     font-size: medium;
 }
 
 hr {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 p>img {
@@ -73,6 +77,12 @@ main {
     body {
         margin-left: 8rem;
         margin-right: 8rem;
+    }
+
+    #references ol {
+        column-count: 2;
+        font-size: x-small;
+        column-gap: 3rem;
     }
 
 }
