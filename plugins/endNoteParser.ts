@@ -29,9 +29,10 @@ const createEndNote = (anchor: HTMLAnchorElement, position: number, pageTitle: s
 
 
     const link = doc.createElement('a');
-    link.textContent = ` [${position}.]`;
+    link.textContent = ` [${position}]`;
     link.href = `#end-note-${position}`;
     link.setAttribute('slot', 'link');
+    link.className = "superscript"
 
     endNote.appendChild(text)
     endNote.appendChild(link)
