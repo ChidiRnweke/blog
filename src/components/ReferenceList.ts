@@ -1,7 +1,6 @@
 import { getElementOrThrow } from "../utils/dom";
 
 class CollapsableReferenceList extends HTMLElement {
-    private button!: HTMLButtonElement;
     private referenceList!: any;
     private isOpen = false;
 
@@ -12,15 +11,16 @@ class CollapsableReferenceList extends HTMLElement {
     }
 
     public connectedCallback(): void {
-        this.button = getElementOrThrow(this.shadowRoot!, 'button');
         this.referenceList = getElementOrThrow<HTMLSlotElement>(this.shadowRoot!, 'slot[name="reference-section"]').assignedElements()[0];
-        this.button.addEventListener('click', () => this.toggleList());
-        this.updateButton();
+        this.addEventListener('click', () => this.toggleList());
+    }
+
+    public expand() {
+        this.toggleList();
     }
 
     private toggleList(): void {
         this.isOpen = !this.isOpen;
-        this.updateButton();
         this.referenceList.classList.toggle('ref-active', this.isOpen);
         if (this.isOpen) {
             this.referenceList.style.maxHeight = `${this.referenceList.scrollHeight}px`;
@@ -29,19 +29,11 @@ class CollapsableReferenceList extends HTMLElement {
         }
     }
 
-    private updateButton(): void {
-        this.button.textContent = this.isOpen ? 'Hide references' : 'Show references';
-        const afterContent = this.isOpen ? '"-"' : '"+"';
-        this.shadowRoot!.querySelector('style')!.textContent += `
-            button::after { content: ${afterContent}; }
-        `;
-    }
-
     private render(): void {
         this.shadowRoot!.innerHTML = /*html*/`
 
 <style>
-    button {
+    span {
         background-color: var(--background-alt);
         border-radius: 5px;
         cursor: pointer;
@@ -58,12 +50,12 @@ class CollapsableReferenceList extends HTMLElement {
         color: var(--text-color)
     }
     
-    button:hover {
+    span:hover {
         color: var(--accent-color);
         font-size: 1.1rem;
     }
 
-    button::after {
+    span::after {
         font-size: 1.2rem;
         color: var(--text-color);
         transition: transform 0.3s ease;
@@ -79,7 +71,7 @@ class CollapsableReferenceList extends HTMLElement {
         transition: max-height 0.3s ease-out;
     }
 </style>
-        <button type="button">Show references</button>
+        <span>Show references</span>
         <slot name="reference-section"></slot>
         `;
     }
