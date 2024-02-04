@@ -13,15 +13,15 @@ Through a series of experiments with Vite, I made an SSG (by mistake!) that, whi
 
 Here's a how it works in short:
 
-1. **Writing Your Article**: I create a `.md` file and place it in the `src/articles` directory.
+1. **Writing the Article**: I create a `.md` file and place it in the `src/articles` directory.
 
-2. **Providing References**: I use the `plugins/referenceList.ts` script to generate a preliminary reference list for your article. It's a great starting point, but the references do still need some editing. This is not done at every build because it takes a fair amount of time. 
+2. **Providing References**: I use the `plugins/referenceList.ts` script to generate a preliminary reference list for the article. It's a great starting point, but the references do still need some editing. This is not done at every build because it takes a fair amount of time. 
 3. **The build?** Once the article and references are in place, the Vite-based build tool kicks into action, performing several tasks:
    - **Markdown to HTML**: Converts the Markdown article into semantic HTML.
    - **Link Transformation**: Transforms all `<a>` tags into `<end-note>` tags.
-   - **Reference List Addition**: Automatically appends a reference list to your article, based on the reference JSON tags. The `<end-note>` tags refer to these.
+   - **Reference List Addition**: Automatically appends a reference list to the article, based on the reference JSON tags. The `<end-note>` tags refer to these.
    - **Template Integration**: Injects a predefined head, header, and footer into the article, providing a consistent look and feel across the site.
-   - **Continuous Deployment**: Thanks to an existing Vite CI setup, every commit triggers a rebuild and deployment of the site to GitHub Pages. This effectively means that if the article is already in the repo you can do edits from everywhere, even your phone.
+   - **Continuous Deployment**: Thanks to an existing Vite CI setup, every commit triggers a rebuild and deployment of the site to GitHub Pages. This effectively means that if the article is already in the repo I can do edits from everywhere, even my phone.
 
 This streamlined process allows me to focus on creating content.
 
