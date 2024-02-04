@@ -38,7 +38,6 @@ class CollapsableReferenceList extends HTMLElement {
         border-radius: 5px;
         cursor: pointer;
         padding: 1rem;
-        width: 100%;
         border: 1px solid var(--subtle-color, #ccc);
         text-align: left;
         outline: none;
