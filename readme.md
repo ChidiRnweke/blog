@@ -8,7 +8,7 @@ Through a series of experiments with Vite, I made an SSG (by mistake!) that, whi
 
 - **Markdown to HTML**: I write my blog posts in Markdown, and they're magically transformed into HTML. It keeps content creation straightforward and focused.
 - **Template Inheritance**: Inspired by Django, this feature allows for reusing HTML structures, making the site more DRY. 
-- **End-Note References**: I developed a method to transform `<a>` tags into `<end-note>` tags at build time. These give wikipedia inspired references directly in my articles, adding a neat touch to referencing. Running `plugins/referenceLists.ts` exports the titles of all anchors to a JSON format.
+- **End-Note References**: I developed a method to transform `<a>` tags into `<end-note>` tags at build time. These give wikipedia inspired references directly in my articles, adding a neat touch to referencing. Running `plugins/initReferenceList.ts` exports the titles of all anchors to a JSON format.
 - **🚧 Semantic HTML**: I’ve made an effort to improve the site's semantics by ensuring titles are properly sectioned, aiming for better document structure and accessibility. This is just a first step though, accessibility still needs some work. 
 
 Here's a how it works in short:
