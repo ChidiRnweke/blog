@@ -228,10 +228,10 @@ Now, let's pivot to Scala and explore what it brings to the table...
 
 ## Scala's value proposition
 
-Diving into Scala's offerings, we find three compelling advantages. Kicking things off is **Turning Complex Ideas into Simple Code**, addressing a fundamental challenge often encountered in Python development. Following this, we'll look at an interesting theory I've been mulling over. Our second standout feature, **Code Once, Run Anywhere (\* 3): Compiling to JVM, Native, and JavaScript**, might not be Scala's official slogan, but it's a suggestion the folks at Scala-center might find intriguing! Last but by no means least, we encounter **Resume Driven Development: (The Buzzwords)**. Despite the seemingly cynical name, this point is made with a dose of affection, acknowledging Scala's role in powering a range of innovative tools for tackling diverse challenges. Without further delay, let's examine our first value proposition in detail.
+Diving into Scala's offerings, we find three compelling advantages. Kicking things off is **Turning Complex Ideas into Simple Code**, addressing a fundamental challenge often encountered in Python development. Following this, we'll look at an interesting theory I've been mulling over. Our second standout feature, **Code Once, Run Anywhere (\* 3): Compiling to JVM, Native, and JavaScript**, might not be Scala's official slogan, but it's a suggestion the folks at Scala-center might find intriguing! Last but by no means least, we encounter **Resume Driven Development: The Buzzwords**. Despite the seemingly cynical name, this point is made with a dose of affection, acknowledging Scala's role in powering a range of innovative tools for tackling diverse challenges. Without further delay, let's examine our first value proposition in detail.
 
 
-### Value proposition 1: Turning Complex Ideas into Simple Code
+### Turning Complex Ideas into Simple Code
 
 ```scala
 case class MenuItem(name: String, price: Float)
@@ -299,9 +299,7 @@ This may sound nebulous but let's look at the following two graphs:
 ![[degrees of freedom plot]](/images/scala3py4/dof_plot.jpg)
 
 The takeaway? While in many programs you cannot eliminate the need for testing for altogether, reducing the degrees of freedom allows for a leaner testing strategy. However, this reduction often comes at the cost of increased code complexity—a trade-off that can be annoying. For Scala this curve looks more favorable than for Python: as you reduce the degrees of freedom the complexity rises more gracefully than in Python's case.
-### Value proposition 2: Compiling to JavaScript and native
-
-
+### Code Once, Run Anywhere (\* 3): Compiling to JVM, Native, and JavaScript
 <img src="/images/scala3py4/scala-platforms.png" 
 data-alt-src="/blog/images/scala3py4/scala-platforms-dark.png" class="dark-toggle"></img>
 
@@ -322,7 +320,7 @@ To show how easy this is I went out of my way to convert an existing toy project
 %%game goes here%%
 
 You can download the binaries for windows, macOS and Linux as well.
-### Value proposition 3: The buzzwords
+### Resume Driven Development: The buzzwords
 
 
 ![[degrees of freedom plot]](/images/scala3py4/nest-kafka.jpg)
