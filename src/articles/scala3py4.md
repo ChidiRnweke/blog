@@ -1,6 +1,8 @@
 # Scala 3 is Python 4 ... or is it? Part 1.
 ## Setting the stage
 
+![Is scala 3 Python 4?](/images/scala3py4/scala3py4.svg)
+
 On a nice day in late 2023 I was [doomscrolling](https://en.wikipedia.org/wiki/Doomscrolling) on Reddit when I saw an enticing [opinion](https://www.reddit.com/r/scala/comments/14cfh1n/comment/jokrski/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).
 
 > The move to Scala 3 syntax should have been coupled with a marketing push to Python3 developers.
