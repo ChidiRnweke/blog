@@ -309,11 +309,11 @@ When you've put your heart and soul into creating a Python project, you naturall
 
 There are projects such as Pyinstaller that promise to bundle Python and all its dependencies into a single executable. I haven't used it but everyone I know that has relays the same frustrating experience. Containerization offers a more robust solution, but it assumes a certain level of technical proficiency from your users, which might not always be the case. The alternative? Turning your project into a web application, which, while more universally accessible, introduces its own set of complexities and limitations.
 
-This is where the allure of using other programming languages, such as Scala, comes from. Aside from targeting the Java virtual machine (JVM) Scala is capable of compiling to both a standalone executable as well as JavaScript. This means that the language is truly cross-platform. ([Write once, run everywhere](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) * 3) seems to be what they're going for.
+This is where the allure of using other programming languages, such as Scala, comes from. Aside from targeting the Java virtual machine (JVM) Scala is capable of compiling to both a standalone executable as well as JavaScript. This means that the language is truly cross-platform. [Write once, run everywhere](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) * 3 seems to be what they're going for.
 
-However, as with any technology that seems too promising, there are caveats. For instance, Scala Native, at the time of writing, is limited to single-threaded execution, though this is expected to change in the upcoming 0.5 version. Considering it has not reached a 1.0 release, Scala Native's evolving nature means the platform is rapidly advancing but that may present stability concerns.
+However, as with any technology that seems too promising, there are caveats. For instance, Scala Native, at the time of writing, is limited to single-threaded execution, though this is expected to change in the upcoming 0.5 version. Considering it has not reached a 1.0 release, Scala Native's evolving nature means the platform is advancing but that may present stability concerns.
 
-My reservations about Scala.js stem from the fact that my preferred Typescript stack uses web components. The API "feels" distinctly JavaScript-y to me and moving it to scala.js would have only marginal gains which are offset by the extra effort of something that seems on the experimental side. 
+My reservations about Scala.js stem from the fact that my preferred Typescript stack uses web components. Scala.js' API "feels" distinctly JavaScript-y to me and moving it to Scala.js would have only marginal gains which are offset by the additional effort of something that seems on the experimental side. 
 
 Where Scala.js would shine are cases where you have a lot of business logic. These can be written in Scala for the reasons outlined in value proposition 1. Afterwards you can compile these to JavaScript, build your frontend as usual and interact with the compiled JavaScript code.
 
@@ -332,7 +332,7 @@ tictactoe-game {
 
 <tictactoe-game><tictactoe-game/>
 
-You can download the binaries for Linux in the project as well in the repository linked above. 
+You can download the binaries for a terminal version on Linux in the project as well in the repository linked above. Let's dial up the complexity a notch after this simple project. 
 ### Resume Driven Development: The buzzwords
 
 
@@ -365,7 +365,7 @@ Alright, let's circle back to our starting point: the big question of whether Sc
 
 From there, we unpacked what Scala brings to the table: its solid type system, the ability to run just about anywhere, and a toolbox of advanced libraries for when things get complex. But, it's clear these strengths also kind of niche-fy Scala, making it seem more like a specialist's pick than a language for the average programmer.
 
-We're eyeing to tackle projects in Python and in two flavours of Scala—keeping it simple in one and going all out with functional programming in the other. This approach isn't just about showing off Scala's range; it's about breaking down the perception that it's only for the heavy-lifting in coding. In total that's 3 projects written three times each, I hope to see you guys in the next 3 parts.
+We're eyeing to tackle projects in Python and in two flavours of Scala—keeping it simple in one and going all out with functional programming in the other. This approach isn't just about showing off Scala's range; it's about breaking down the perception that it's only for the heavy-lifting in coding. In total that's 3 projects written three times each. I hope to see you guys in the next part on scripting!
 
 Let me know your thoughts by opening an issue on the repository, a comment section is in the works!
 
