@@ -317,9 +317,20 @@ Where Scala.js would shine are cases where you have a lot of business logic. The
 
 To show how easy this is I went out of my way to convert an existing toy project, Tictactoe, to a project that compiles for the JVM, native and scala.js. You can see the result underneath:
 
-%%game goes here%%
+<style>
+tictactoe-game {
+    border-radius: 5px;
+    border: 1px solid var(--subtle-color);
+    max-width: 500px;
+    justify-self: center;
+    display: grid;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/scala-tictactoe@1.0.10"></script>
 
-You can download the binaries for windows, macOS and Linux as well.
+<tictactoe-game><tictactoe-game/>
+
+You can download the binaries for Linux in the project as well in the repository linked above. 
 ### Resume Driven Development: The buzzwords
 
 

@@ -16,7 +16,9 @@ class CollapsableReferenceList extends HTMLElement {
     }
 
     public expand() {
-        this.toggleList();
+        if (!this.isOpen) {
+            this.toggleList();
+        }
     }
 
     private toggleList(): void {
@@ -33,7 +35,7 @@ class CollapsableReferenceList extends HTMLElement {
         this.shadowRoot!.innerHTML = /*html*/`
 
 <style>
-    span {
+    summary {
         background-color: var(--background-alt);
         border-radius: 5px;
         cursor: pointer;
@@ -49,12 +51,12 @@ class CollapsableReferenceList extends HTMLElement {
         color: var(--text-color)
     }
     
-    span:hover {
+    summary:hover {
         color: var(--accent-color);
         font-size: 1.1rem;
     }
 
-    span::after {
+    summary::after {
         font-size: 1.2rem;
         color: var(--text-color);
         transition: transform 0.3s ease;
@@ -70,7 +72,7 @@ class CollapsableReferenceList extends HTMLElement {
         transition: max-height 0.3s ease-out;
     }
 </style>
-        <span>Show references</span>
+        <summary>Show references</summary>
         <slot name="reference-section"></slot>
         `;
     }
