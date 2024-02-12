@@ -8,36 +8,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: deployment
     steps:
       - uses: actions/checkout@v2
       - name: Build static files
         run: npm install && npm run build
       - name: Archive static files
         run: tar -czvf build.tar.gz -C dist/ .
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifact
-          path: build.tar.gz
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: deployment
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifact
-          path: temp
       - name: Copy and deploy files to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "temp/build.tar.gz"
+          source: ./build.tar.gz
           target: "~/"
+
       - name: Extract files on server and deploy
         uses: appleboy/ssh-action@master
         with:
@@ -45,4 +32,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            rm -rf /var/www/home/* && tar --no-same-permissions --no-overwrite-dir -xzvf ~/temp/build.tar.gz -C /var/www/home && rm ~/temp/build.tar.gz
+            rm -rf /var/www/home/* 
+            tar --no-same-permissions --no-overwrite-dir -xzvf ~/build.tar.gz -C /var/www/home 
+            rm ~/build.tar.gz
