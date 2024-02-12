@@ -303,7 +303,7 @@ This may sound nebulous but let's look at the following two graphs:
 The takeaway? While in many programs you cannot eliminate the need for testing for altogether, reducing the degrees of freedom allows for a leaner testing strategy. However, this reduction often comes at the cost of increased code complexity—a trade-off that can be annoying. For Scala this curve looks more favorable than for Python: as you reduce the degrees of freedom the complexity rises more gracefully than in Python's case.
 ### Code Once, Run Anywhere (\* 3): Compiling to JVM, Native, and JavaScript
 <img src="/images/scala3py4/scala-platforms.png" 
-data-alt-src="/blog/images/scala3py4/scala-platforms-dark.png" class="dark-toggle"></img>
+data-alt-src="/images/scala3py4/scala-platforms-dark.png" class="dark-toggle"></img>
 
 When you've put your heart and soul into creating a Python project, you naturally want to share it with the world. Whether it's a groundbreaking algorithm, a useful utility, or a fun game, sharing your work can be immensely satisfying. However, distribution can quickly become a headache. The first thing you could do is distribute it on pypi, the drawback is that doing so means you need a Python interpreter with the right version to run your project.
 

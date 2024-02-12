@@ -34,10 +34,15 @@ const injectContentIntoTemplate = (template, placeholderId, content) => {
 async function processMarkdownFiles(sourceDir, destDir, template) {
     const files = fs.readdirSync(sourceDir).filter(file => file.endsWith('.md'));
 
-    await Promise.all(files.map(async (file) => {
+    await Promise.all(files.map(async (file: string) => {
         const markdown = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
         const blogHTML = md.render(markdown);
         const blogDOM = new JSDOM(blogHTML);
+        const htmlFileName = file.replace(/\.md$/, '.html');
+        const fileNameNoExt = file.split(".md")[0]
+        const writePath = path.join(destDir, fileNameNoExt)
+
+        await mkdir(writePath, { recursive: true })
 
         const refPath = path.join(sourceDir, "references", file.replace(/\.md$/, '.json'))
         if (fs.existsSync(refPath)) {
@@ -45,8 +50,7 @@ async function processMarkdownFiles(sourceDir, destDir, template) {
             endNoteTransformer(blogDOM.window.document, refJSON.map(entry => entry.title));
         }
         const finalHtml = injectContentIntoTemplate(template, "main", blogDOM.window.document.body.innerHTML);
-        const htmlFileName = file.replace(/\.md$/, '.html');
-        await writeFile(path.join(destDir, htmlFileName), finalHtml);
+        await writeFile(path.join(writePath, "index.html"), finalHtml);
     }));
 }
 
