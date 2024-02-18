@@ -27,3 +27,4 @@ src/articles/*.html
 config
 articles/*
 !articles/index.html
+Dockerfile
