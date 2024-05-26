@@ -1,128 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <link rel="stylesheet" href="/css/home.css">
+  <head>
+    <link rel="stylesheet" href="/css/home.css" />
     <template id="head"></template>
-</head>
+  </head>
 
-
-
-<body>
+  <body>
     <template id="header"></template>
     <main>
-        <hero-section style="--background-image: url('/images/bg.jpg')">
-            <img slot="image" src="images/portrait.png" alt="Foreground Image">
-        </hero-section>
+      <hero-section style="--background-image: url('/images/bg.jpg')">
+        <img slot="image" src="images/portrait.png" alt="Foreground Image" />
+      </hero-section>
 
-        <div class="main-grid">
-            <section class="skills">
-                <h2>Personal Interests</h2>
-                <div class="skills-container">
-                    <picture>
-                        <img src="images/beach.jpg">
-                    </picture>
+      <div class="main-grid">
+        <section class="skills">
+          <h2>Personal Interests</h2>
+          <div class="skills-container">
+            <picture>
+              <img src="images/beach.jpg" />
+            </picture>
 
-                    <div class="skills-text">
-                        <p>Solving problems using <strong>machine learning</strong></p>
-                        <p>Typesafe programming with <strong>Scala</strong></p>
-                        <p>Setting up <strong>data pipelines</strong> that scale</p>
-                        <p>Anything that satisfies my <strong>curiosity</strong></p>
-                        <p><strong>Traveling</strong>, having a beer or two, and great music</p>
-                    </div>
-                </div>
-            </section>
-            <section class="recent-articles">
-                <h2>Recent articles</h2>
-                <p>
-                    <a href="/articles/scala3py4/">Scala 3 is Python 4 ... or is it? (part 1)
-                    </a>
-                </p>
-                <p>
-                    <a href="/articles/jetML/">Writing your own machine learning library:
-                        introducing JetML
-                    </a>
-                </p>
-                <p>
-                    <a href="/articles/vanillaWeb/"> How I made this site using
-                        vanilla JS: a crash course
-                    </a>
-                </p>
+            <div class="skills-text">
+              <p>Solving problems using <strong>machine learning</strong></p>
+              <p>Typesafe programming with <strong>Scala</strong></p>
+              <p>Setting up <strong>data pipelines</strong> that scale</p>
+              <p>Anything that satisfies my <strong>curiosity</strong></p>
+              <p>
+                <strong>Traveling</strong>, having a beer or two, and great
+                music
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="recent-articles">
+          <h2>Recent articles</h2>
+          <p>
+            <a href="/articles/scala3py4/"
+              >Scala 3 is Python 4 ... or is it? (part 1)
+            </a>
+          </p>
+        </section>
+        <section class="experience">
+          <h2>Select Projects</h2>
+          <div class="experience-container">
+            <picture>
+              <img src="images/side.jpg" />
+            </picture>
 
-                <p><a href="/articles/dataEngineeringTrenches/">Lessons
-                        learnt from the trenches: Data
-                        engineering
-                    </a>
+            <div class="experience-text">
+              <p><strong>Modelling glucose</strong> levels for T1DM patients</p>
+              <p><strong>AI photo booth</strong> at a large music festival</p>
+              <p>Creating data science <strong>learning material</strong></p>
+              <p>
+                <strong>Data analysis</strong> in manufacturing, sociology,
+                finance and more
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="projects">
+          <h2>Projects</h2>
+          <div class="projects-container">
+            <project-card>
+              <img src="images/personal-web34.jpg" slot="image" />
+              <section slot="caption">
+                <h3>My personal website</h3>
+                <p>
+                  How I started building my personal website with vanilla HTML,
+                  CSS and JS but accidentally made a static site generator along
+                  the way.
+                </p>
+                <a class="button" href="https://github.com/ChidiRnweke/blog">
+                  Learn more.
+                </a>
+              </section>
+            </project-card>
+            <project-card>
+              <img src="images/squishlink.jpg" slot="image" />
+              <section slot="caption">
+                <h3>SquishLink</h3>
+                <p>
+                  A link shortener made with pure functional Scala. It's
+                  accessible
+                  <a href="https://chidinweke.be/squish">here</a>. The only
+                  issue is that it probably makes your links longer.
+                </p>
+                <a
+                  class="button"
+                  href="https://github.com/ChidiRnweke/SquishLink-backend"
+                >
+                  Learn more.
+                </a>
+              </section>
+            </project-card>
+            <project-card>
+              <img src="images/squishlink_rs.png" slot="image" />
+              <section slot="caption">
+                <h3>Rust implementation of SquishLink</h3>
+                <p>
+                  Following the trend of rewriting everything in Rust, I rewrote
+                  SquishLinks in Rust. The version deployed currently is
+                  actually the Rust version.
+                </p>
+                <a
+                  class="button"
+                  href="https://github.com/ChidiRnweke/squishlink_rs"
+                >
+                  Learn more.
+                </a>
+              </section>
+            </project-card>
+            <project-card>
+              <img src="images/adversarial.jpg" slot="image" />
+              <section slot="caption">
+                <h3>Adversarial attack on a neural network.</h3>
+                <p>
+                  I tried to fool a neural network into thinking all images in
+                  the training set were airplanes. It worked.
                 </p>
                 <p>
-                    <a href="/articles/learningAI/">How you should learn AI in
-                        202X
-                    </a>
+                  It's a novel general purpose attack that can be used on any
+                  neural network if you have access to the gradients.
                 </p>
-            </section>
-            <section class="experience">
-                <h2>Select Projects</h2>
-                <div class="experience-container">
-                    <picture>
-                        <img src="images/side.jpg">
-                    </picture>
-
-                    <div class="experience-text">
-                        <p><strong>Modelling glucose</strong> levels for T1DM patients</p>
-                        <p><strong>AI photo booth</strong> at a large music festival</p>
-                        <p>Creating data science <strong>learning material</strong></p>
-                        <p><strong>Data analysis</strong> in manufacturing, sociology, finance and more</p>
-                    </div>
-                </div>
-            </section>
-            <section class="projects">
-                <h2>Projects</h2>
-                <div class="projects-container">
-                    <project-card>
-                        <img src="images/beach34.jpg" slot="image">
-                        <section slot="caption">
-                            <h3>Work in progress</h3>
-                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                            <button>Learn more.</button>
-                        </section>
-                    </project-card>
-                    <project-card>
-                        <img src="images/beach34.jpg" slot="image">
-                        <section slot="caption">
-                            <h3>Work in progress</h3>
-                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                            <button>Learn more.</button>
-                        </section>
-                    </project-card>
-                    <project-card>
-                        <img src="images/beach34.jpg" slot="image">
-                        <section slot="caption">
-                            <h3>Work in progress</h3>
-                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                            <button>Learn more.</button>
-                        </section>
-                    </project-card>
-                    <project-card>
-                        <img src="images/beach34.jpg" slot="image">
-                        <section slot="caption">
-                            <h3>Work in progress</h3>
-                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                            <button>Learn more.</button>
-                        </section>
-                    </project-card>
-                    <project-card>
-                        <img src="images/beach34.jpg" slot="image">
-                        <section slot="caption">
-                            <h3>Work in progress</h3>
-                            <p>Stay tuned for the cool stuff that will be coming here soon.</p>
-                            <button>Learn more.</button>
-                        </section>
-                    </project-card>
-                </div>
-            </section>
-        </div>
+                <a
+                  class="button"
+                  href="https://github.com/ChidiRnweke/computer-vision-exercises-and-labs/blob/master/assignment3/AdversarialAttack.ipynb"
+                >
+                  Learn more.
+                </a>
+              </section>
+            </project-card>
+            <project-card>
+              <img src="images/beach34.jpg" slot="image" />
+              <section slot="caption">
+                <h3>... And much more.</h3>
+                <p>
+                  If you're Interested in more projects, you can check out my
+                  GitHub profile. I have a lot of projects there that I'm proud
+                  of. Some of them are even finished. I keep even projects that
+                  I'm not so proud of there, to remind myself of how far I've
+                  come.
+                </p>
+                <a class="button" href="https://github.com/ChidiRnweke/">
+                  Learn more.
+                </a>
+              </section>
+            </project-card>
+          </div>
+        </section>
+      </div>
     </main>
     <template id="footer"></template>
-</body>
-
+  </body>
 </html>

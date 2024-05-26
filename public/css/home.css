@@ -126,8 +126,8 @@ header {
         row-gap: 1rem;
         margin-top: 0.5rem;
         grid-template-areas:
-            "skills . experience"
             "skills description experience"
+            "skills . experience"
             "card card card";
         min-height: 950px;
     }
@@ -156,6 +156,12 @@ header {
 .recent-articles {
     margin-top: 3.7rem;
     grid-area: description;
+}
+.recent-articles a, project-card section a  {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
 }
 
 .recent-articles p {
@@ -207,15 +213,19 @@ project-card {
     min-width: 250px;
 }
 
-project-card section button {
+project-card section .button {
     background-color: var(--secondary-color);
     border-radius: 5px;
     padding: 0.8rem;
     place-self: flex-end;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    text-decoration: none;
     border: none;
+    color: var(--foreground-color);
 }
+
+
 
 img {
     user-select: none;
@@ -225,13 +235,13 @@ img {
     -ms-user-select: none;
 }
 
-project-card section button:hover {
+project-card section .button:hover {
     background-color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-project-card section button:active {
+project-card section .button:active {
     transform: translateY(1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
