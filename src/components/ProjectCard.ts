@@ -40,7 +40,7 @@ class ProjectCard extends HTMLElement {
         max-width: 100%;
         height: auto;
         display: block;
-        filter: grayscale(100%);
+        filter: grayscale(80%);
         transition: filter 0.3s ease;
         margin-bottom: 0;
     }
