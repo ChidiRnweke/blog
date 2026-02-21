@@ -1,10 +1,11 @@
 {
-    "main": "./index.html",
-    "articles/index.html": "./articles/index.html",
-    "games/index.html": "./games/index.html",
-    "scala3py4": "./articles/scala3py4/index.html",
-    "vanillaWeb": "./articles/vanillaWeb/index.html",
-    "howYouShouldLearnAI": "./articles/learningAI/index.html",
-    "jetML": "./articles/jetML/index.html",
-    "dataEngineeringTrenches": "./articles/dataEngineeringTrenches/index.html"
+  "main": "./index.html",
+  "articles/index.html": "./articles/index.html",
+  "games/index.html": "./games/index.html",
+  "scala3py4": "./articles/scala3py4/index.html",
+  "vanillaWeb": "./articles/vanillaWeb/index.html",
+  "howYouShouldLearnAI": "./articles/learningAI/index.html",
+  "jetML": "./articles/jetML/index.html",
+  "dataEngineeringTrenches": "./articles/dataEngineeringTrenches/index.html",
+  "humanWrittenForTheMostPart": "./articles/humanWrittenForTheMostPart/index.html"
 }

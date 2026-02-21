@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="/css/home.css" />
@@ -8,7 +8,7 @@
   <body>
     <template id="header"></template>
     <main>
-      <hero-section style="--background-image: url('/images/bg.jpg')">
+      <hero-section style="--background-image: url(&quot;/images/bg.jpg&quot;)">
         <img slot="image" src="images/portrait.png" alt="Foreground Image" />
       </hero-section>
 
@@ -33,12 +33,22 @@
           </div>
         </section>
         <section class="recent-articles">
-          <h2>Recent articles</h2>
-          <p>
-            <a href="/articles/scala3py4/"
-              >Scala 3 is Python 4 ... or is it? (part 1)
-            </a>
-          </p>
+          <section>
+            <h3>Recommended</h3>
+            <p>
+              <a href="/articles/humanWrittenForTheMostPart/"
+                >I promise, all posts are human written (for the most part)</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Latest</h3>
+            <p>
+              <a href="/articles/scala3py4/"
+                >Scala 3 is Python 4 ... or is it? (part 1)
+              </a>
+            </p>
+          </section>
         </section>
         <section class="experience">
           <h2>Select Projects</h2>
